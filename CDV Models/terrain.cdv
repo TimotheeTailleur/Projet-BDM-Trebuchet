@@ -1,0 +1,57 @@
+begin script
+
+disable backfacecull
+
+
+enable texturerectangle
+bindrectangle "grass.tiff"
+
+begin quadstrip
+
+	texture 0 0
+	vertex3f 0 0 0
+	texture 512 0
+	vertex3f 1 0 0
+	texture 0 512
+	vertex3f 0 1 0
+	texture 512 512
+	vertex3f 1 1 0
+
+end quadstrip
+disable texturerectangle
+
+enable texture2d
+bind "fence.bmp"
+depthmask false
+begin quadstrip
+
+	color4f 1 1 1 .3
+	texture 0 0
+	vertex3f 0 0 0
+
+	texture 0 1
+	vertex3f 0 0 0.5
+
+	texture 1 0
+	vertex3f 0 1 0
+
+	texture 1 1
+	vertex3f 0 1 0.5
+
+	texture 0 0
+	vertex3f 1 1 0
+
+	texture 0 1
+	vertex3f 1 1 0.5
+
+	texture 1 0
+	vertex3f 1 0 0
+
+	texture 1 1
+	vertex3f 1 0 0.5
+
+end quadstrip
+depthmask true
+disable texture2d
+
+end script

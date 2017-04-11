@@ -2,12 +2,29 @@ begin script
 
 disable backfacecull
 
+# Mise en place des deux Poteaux 
+
+pushmatrix
+color3f .4 .4 .4
+translatef 0 1 .25
+scalef .15 .15 .5
+volume cylinder 20 true true
+popmatrix
+
+pushmatrix
+color3f .4 .4 .4
+translatef 1 1 .25
+scalef .15 .15 .5
+volume cylinder 20 true true
+popmatrix
+
+#Gazon ma gueule
 
 enable texturerectangle
 bindrectangle "grass.tiff"
 
 begin quadstrip
-
+	color3f 1 1 1
 	texture 0 0
 	vertex3f 0 0 0
 	texture 512 0
@@ -19,6 +36,8 @@ begin quadstrip
 
 end quadstrip
 disable texturerectangle
+
+#Grillage
 
 enable texture2d
 bind "fence.bmp"

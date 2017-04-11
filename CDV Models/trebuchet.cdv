@@ -1,0 +1,121 @@
+begin displaylist
+
+newlist pied
+
+	enable texture2d
+	bind "wood.bmp"
+	depthmask true
+
+	begin quadstrip
+		
+		color3f 1 1 1
+
+		texture 1 0
+		vertex3f .2 0 0
+
+		texture 0 0
+		vertex3f 0 0 0
+
+		texture 1 1
+		vertex3f .2 0 .2
+
+		texture 0 1
+		vertex3f 0 0 .2
+
+		texture 1 0
+		vertex3f .2 1 .2
+
+		texture 0 0
+		vertex3f 0 1 .2
+
+		texture 1 1
+		vertex3f .2 1 0
+
+		texture 0 1
+		vertex3f 0 1 0
+
+	end quadstrip
+
+	bind "wood.bmp"
+	depthmask true
+	begin quadstrip
+
+		color3f 1 1 1
+
+		texture 1 1 
+		vertex3f 0 1 .2
+
+		texture 0 1
+		vertex3f 0 0 .2
+
+		texture 1 0
+		vertex3f 0 1 0
+
+		texture 0 0
+		vertex3f 0 0 0
+
+		texture 1 0
+		vertex3f .2 1 0
+
+		texture 0 0
+		vertex3f .2 0 0
+
+		texture 1 1
+		vertex3f .2 1 .2
+
+		texture 0 1
+		vertex3f .2 0 .2
+
+	end quadstrip
+endlist
+
+end displaylist
+
+begin script
+
+disable backfacecull
+
+calllist pied
+
+pushmatrix
+	translate 0.8 0 0
+	calllist pied
+popmatrix
+
+pushmatrix 
+	rotate 60 0 0 0
+	calllist pied
+popmatrix
+
+pushmatrix
+	translate 0.8 0 0
+	rotate 60 0 0 0
+	calllist pied
+popmatrix
+
+pushmatrix
+	translate 0 0.5 .86
+	rotate -60 1 0 0
+	calllist pied
+popmatrix
+
+pushmatrix
+	translate .8 0.5 .86
+	rotate -60 1 0 0
+	calllist pied
+popmatrix
+
+pushmatrix
+	translate 0 0.55 .8
+	rotate -90 0 0 1
+	scale .5 1 .5
+	calllist pied
+popmatrix
+
+pushmatrix
+	translate .4 0 .85
+	rotate -20 1 0 0
+	scale 1 1.7 1
+	calllist pied
+popmatrix
+end script

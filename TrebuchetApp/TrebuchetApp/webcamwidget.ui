@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>WebcamWidget</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QLabel" name="labelCam_">
      <property name="autoFillBackground">
@@ -25,15 +25,11 @@
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="QLabel" name="label">
-       <property name="text">
-        <string>Affichage Webcam</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Traitement &lt;&gt; Webcam</string>
+     </property>
+    </widget>
    </item>
    <item>
     <widget class="QLabel" name="label_2">

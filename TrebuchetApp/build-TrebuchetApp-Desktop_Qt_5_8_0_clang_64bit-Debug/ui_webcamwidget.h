@@ -16,7 +16,6 @@
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
-#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,9 +23,8 @@ QT_BEGIN_NAMESPACE
 class Ui_WebcamWidget
 {
 public:
-    QVBoxLayout *verticalLayout;
-    QLabel *labelCam_;
     QHBoxLayout *horizontalLayout;
+    QLabel *labelCam_;
     QLabel *label;
     QLabel *label_2;
 
@@ -35,32 +33,26 @@ public:
         if (WebcamWidget->objectName().isEmpty())
             WebcamWidget->setObjectName(QStringLiteral("WebcamWidget"));
         WebcamWidget->resize(624, 492);
-        verticalLayout = new QVBoxLayout(WebcamWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout = new QHBoxLayout(WebcamWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         labelCam_ = new QLabel(WebcamWidget);
         labelCam_->setObjectName(QStringLiteral("labelCam_"));
         labelCam_->setAutoFillBackground(true);
 
-        verticalLayout->addWidget(labelCam_);
+        horizontalLayout->addWidget(labelCam_);
 
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setSpacing(6);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(WebcamWidget);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
-
-        verticalLayout->addLayout(horizontalLayout);
-
         label_2 = new QLabel(WebcamWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
         label_2->setAutoFillBackground(true);
 
-        verticalLayout->addWidget(label_2);
+        horizontalLayout->addWidget(label_2);
 
 
         retranslateUi(WebcamWidget);
@@ -72,7 +64,7 @@ public:
     {
         WebcamWidget->setWindowTitle(QApplication::translate("WebcamWidget", "WebcamWidget", Q_NULLPTR));
         labelCam_->setText(QString());
-        label->setText(QApplication::translate("WebcamWidget", "Affichage Webcam", Q_NULLPTR));
+        label->setText(QApplication::translate("WebcamWidget", "Traitement <> Webcam", Q_NULLPTR));
         label_2->setText(QString());
     } // retranslateUi
 

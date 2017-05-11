@@ -30,13 +30,12 @@ WebcamWidget::~WebcamWidget()
 void WebcamWidget:: update(){
     cap_.read(matOriginal_);
 
+
+    cap_.set(CV_CAP_PROP_FRAME_WIDTH,640);
+    cap_.set(CV_CAP_PROP_FRAME_HEIGHT,480);
+
     int frameWidth=cap_.get(CV_CAP_PROP_FRAME_WIDTH);
     int frameHeight=cap_.get(CV_CAP_PROP_FRAME_HEIGHT);
-    frameWidth=frameWidth/2;
-    frameHeight=frameHeight/2;
-    cap_.set(CV_CAP_PROP_FRAME_WIDTH,frameWidth);
-    cap_.set(CV_CAP_PROP_FRAME_HEIGHT,frameHeight);
-
 
     int templateWidth=64;
     int templateHeight=64;
@@ -58,11 +57,12 @@ void WebcamWidget:: update(){
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
     QImage qimgProcessed_((uchar*)matProcessed_.data, matProcessed_.cols, matProcessed_.rows, matProcessed_.step, QImage::Format_Indexed8);
 
+    flip(matOriginal_,matOriginal_,1);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
     ui->labelCam_->setPixmap(QPixmap::fromImage(qimgProcessed_));
 
     }
-    /*flip(matOriginal_,matOriginal_,1);
+    /*
     cvtColor(matOriginal_,matOriginal_,CV_BGR2RGB);
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Forma t_RGB888);
 

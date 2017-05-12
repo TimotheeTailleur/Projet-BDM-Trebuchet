@@ -10,7 +10,7 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
     cap_.open(0); // 0 pour cam défault.
 
     if(!cap_.isOpened()){
-       ui->labelCam_->setText("Erreur: La caméra n'est pas detéctée!");
+       ui->label_2->setText("Erreur: La caméra n'est pas detéctée!");
        return;
     }
 
@@ -59,7 +59,7 @@ void WebcamWidget:: update(){
 
     flip(matOriginal_,matOriginal_,1);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
-    ui->labelCam_->setPixmap(QPixmap::fromImage(qimgProcessed_));
+    //ui->labelCam_->setPixmap(QPixmap::fromImage(qimgProcessed_));
 
     }
     /*

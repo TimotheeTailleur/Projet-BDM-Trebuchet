@@ -17,9 +17,6 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
     tmrTimer_ = new QTimer(this);
     connect(tmrTimer_, SIGNAL(timeout()), this, SLOT(update()));
     tmrTimer_->start(20); // 20 ms
-
-
-
 }
 
 WebcamWidget::~WebcamWidget()

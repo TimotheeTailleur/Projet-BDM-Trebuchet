@@ -34,7 +34,6 @@ private:
     Vector<cv::Vec3f>::iterator itrCircles_;
 
     QTimer * tmrTimer_; //Car on ne peut pas avoir while(1) ou while(true) sinon le processeur ne pourra pas gérer.
-
 public slots:
     void update();
 };

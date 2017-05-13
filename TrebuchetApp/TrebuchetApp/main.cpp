@@ -1,11 +1,21 @@
-#include "webcamwidget.h"
+#include "window.h"
 #include <QApplication>
+#include <QDesktopWidget>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
-    WebcamWidget w;
-    w.show();
+    QApplication app(argc, argv);
+        Window window;
+        window.resize(window.sizeHint());
 
-    return a.exec();
+        int desktopArea = QApplication::desktop()->width() *
+                         QApplication::desktop()->height();
+        int widgetArea = window.width() * window.height();
+
+        if (((float)widgetArea / (float)desktopArea) < 0.75f)
+            window.show();
+        else
+            window.showMaximized();
+        return app.exec();
 }

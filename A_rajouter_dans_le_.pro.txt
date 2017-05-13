@@ -1,0 +1,46 @@
+Ligne 7 : Qt+= blabla tu rajoutes opengl
+Dans les sources : myglwidget.cpp, window.cpp
+Dans les hearders : window.h, myglwidget.h
+Dans les forms : window.ui
+
+
+Chez moi ça ressemble à ça :
+
+#-------------------------------------------------
+#
+# Project created by QtCreator 2017-04-12T15:07:22
+#
+#-------------------------------------------------
+
+QT       += core gui opengl
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = TrebuchetApp
+TEMPLATE = app
+
+SOURCES += main.cpp\
+        webcamwidget.cpp \
+    myglwidget.cpp \
+    window.cpp
+
+HEADERS  += webcamwidget.h \
+    myglwidget.h \
+    window.h
+
+FORMS    += webcamwidget.ui \
+    window.ui
+
+
+LIBS += -lopengl32 -lglu32
+
+INCLUDEPATH +=$$(OPENCV_DIR)\..\..\include
+
+LIBS += -L$$(OPENCV_DIR)\lib \
+    -lopencv_core2412 \
+    -lopencv_highgui2412 \
+    -lopencv_imgproc2412 \
+    -lopencv_features2d2412 \
+    -lopencv_calib3d2412
+
+BISOUS BRO

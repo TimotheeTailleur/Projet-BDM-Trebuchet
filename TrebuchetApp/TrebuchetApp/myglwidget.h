@@ -14,6 +14,7 @@ class MyGLWidget : public QGLWidget
 public:
     explicit MyGLWidget(QWidget *parent = 0);
     ~MyGLWidget();
+
 signals:
 
 public slots:
@@ -22,6 +23,9 @@ protected:
     void initializeGL();
     void paintGL();
     void resizeGL(int width, int height);
+
+
+
 public slots:
 
 

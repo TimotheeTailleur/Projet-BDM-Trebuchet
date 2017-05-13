@@ -2,6 +2,7 @@
 #define WINDOW_H
 
 #include <QWidget>
+#include <QKeyEvent>
 
 namespace Ui {
 class Window;
@@ -13,10 +14,8 @@ class Window : public QWidget
 public:
     explicit Window(QWidget *parent = 0);
     ~Window();
-
-signals:
-
-public slots:
+protected:
+    void keyPressEvent(QKeyEvent *event);
 
 private:
     Ui::Window *ui;

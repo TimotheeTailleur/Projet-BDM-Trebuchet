@@ -67,44 +67,66 @@
       <property name="cursor">
        <cursorShape>CrossCursor</cursorShape>
       </property>
+      <zorder>webcamWidget</zorder>
      </widget>
     </item>
     <item>
-     <widget class="WebcamWidget" name="webcamWidget" native="true">
-      <property name="minimumSize">
-       <size>
-        <width>400</width>
-        <height>200</height>
-       </size>
-      </property>
-      <property name="sizeIncrement">
-       <size>
-        <width>1</width>
-        <height>1</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>0</width>
-        <height>0</height>
-       </size>
-      </property>
-     </widget>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="WebcamWidget" name="webcamWidget" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>400</width>
+          <height>200</height>
+         </size>
+        </property>
+        <property name="sizeIncrement">
+         <size>
+          <width>1</width>
+          <height>1</height>
+         </size>
+        </property>
+        <property name="baseSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="webcamCapture_">
+        <property name="text">
+         <string>Capturer la frame</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <zorder>webcamWidget</zorder>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>WebcamWidget</class>
-   <extends>QWidget</extends>
-   <header>webcamwidget.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>MyGLWidget</class>
    <extends>QWidget</extends>
    <header>myglwidget.h</header>
+   <container>1</container>
+   <slots>
+    <slot>setXRotation(int)</slot>
+    <slot>setZRotation(int)</slot>
+    <slot>setYRotation(int)</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>WebcamWidget</class>
+   <extends>QWidget</extends>
+   <header>webcamwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -4,7 +4,7 @@
 #define MYGLWIDGET_H
 
 #include <QGLWidget>
-#include <GL/glu.h>
+#include <glu.h>
 #include <QThread>
 
 

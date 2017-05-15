@@ -1,11 +1,11 @@
 // myglwidget.cpp
 
 #include <QtWidgets>
-#include <QtOpenGL>
+#include <OpenGL.h>
 
 #include "myglwidget.h"
 
-#include <GL/glu.h>
+#include <glu.h>
 #include <QDebug>
 #include <QTimer>
 

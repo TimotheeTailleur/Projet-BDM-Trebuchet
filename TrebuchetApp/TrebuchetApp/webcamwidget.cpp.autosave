@@ -19,7 +19,7 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
     tmrTimer_->start(10); // 10 ms
 
 
-    connect(webcamCapture_, SIGNAL(clicked()), this, SLOT(detect()));
+    a       connect(webcamCapture_, SIGNAL(clicked()), this, SLOT(detect()));
 }
 
 WebcamWidget::~WebcamWidget()

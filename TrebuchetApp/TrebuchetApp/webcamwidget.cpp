@@ -19,7 +19,8 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
     tmrTimer_->start(10); // 10 ms
 
 
-    connect(webcamCapture_, SIGNAL(clicked()), this, SLOT(detect()));
+    //connect(webcamCapture_, SIGNAL(clicked()), this, SLOT(detect()));
+    QMetaObject::connectSlotsByName(this);
 }
 
 WebcamWidget::~WebcamWidget()
@@ -77,6 +78,12 @@ void WebcamWidget:: update(){
 
 
 void WebcamWidget::detect(){
+
+}
+
+
+void WebcamWidget::on_webcamCapture_clicked()
+{
 
 
     Rect rectProcessing((frameWidth_-templateWidth_)/2,(frameHeight_-templateHeight_)/2,templateWidth_,templateHeight_);

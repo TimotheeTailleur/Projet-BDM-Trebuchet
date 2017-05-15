@@ -43,7 +43,7 @@ private:
     int templateWidth_=50;
     int templateHeight_=50;
 
-    QPushButton webcamCapture_;
+    QPushButton webcamCapture;
 
     Vector<cv::Vec3f> vecCircles_;
     Vector<cv::Vec3f>::iterator itrCircles_;
@@ -53,6 +53,8 @@ private:
 public slots:
     void update();
     void detect();
+
+    void on_webcamCapture_clicked();
 };
 
 #endif // WEBCAMWIDGET_H

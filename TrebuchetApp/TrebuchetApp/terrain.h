@@ -1,6 +1,8 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 #include "cible.h"
+#include <QImage>
+#include <GL/glu.h>
 
 class Terrain
 {
@@ -16,7 +18,10 @@ public:
     void loadGrassTexture();
 
 protected:
-    Cible target_;
+    Cible target_; //Cible du jeu
+
+    GLuint GLtexture[1];
+    GLuint grassTexture[1]; //Texture Herbe
 };
 
 #endif // TERRAIN_H

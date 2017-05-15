@@ -1,7 +1,7 @@
-Ligne 7 : Qt+= blabla tu rajoutes opengl
 Dans les sources : trebuchet.cpp, jeu.cpp, terrain.cpp, score.cpp, cible.cpp
 Dans les hearders : trebuchet.h, jeu.h, terrain.h score.h, cible.h
-
+RESOURCES += \
+    src.qrc
 
 Chez moi ça ressemble à ça :
 #-------------------------------------------------
@@ -51,5 +51,5 @@ LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_features2d2412 \
     -lopencv_calib3d2412
 
-
-BISOUS BRO
+RESOURCES += \
+    src.qrc

@@ -1,6 +1,7 @@
 #ifndef TREBUCHET_H
 #define TREBUCHET_H
 #include <QImage>
+#include <GL/glu.h>
 
 class Trebuchet
 {
@@ -19,13 +20,16 @@ public:
     void setInclinaisonTrebuchet(double inclinaison);
 
     //Chargement des textures
-    void loadLogoTexture(); //Charge la texture du logo TSe
+    void loadLogoTexture(); //Charge la texture du logo TSE
     void loadWoodTexture(); //Charge la texture du trébuchet
 
 protected:
     double angleTrebuchet_;
     double inclinaisonBras_;
 
+    GLuint GLtextures[2];
+    GLuint logoTexture[1]; //Texture logo TSE
+    GLuint woodTexture[1]; //Texture bois du trébuchet
 };
 
 #endif // TREBUCHET_H

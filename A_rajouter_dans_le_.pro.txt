@@ -1,11 +1,9 @@
 Ligne 7 : Qt+= blabla tu rajoutes opengl
-Dans les sources : myglwidget.cpp, window.cpp
-Dans les hearders : window.h, myglwidget.h
-Dans les forms : window.ui
+Dans les sources : trebuchet.cpp, jeu.cpp, terrain.cpp, score.cpp, cible.cpp
+Dans les hearders : trebuchet.h, jeu.h, terrain.h score.h, cible.h
 
 
 Chez moi ça ressemble à ça :
-
 #-------------------------------------------------
 #
 # Project created by QtCreator 2017-04-12T15:07:22
@@ -22,11 +20,21 @@ TEMPLATE = app
 SOURCES += main.cpp\
         webcamwidget.cpp \
     myglwidget.cpp \
-    window.cpp
+    window.cpp \
+    trebuchet.cpp \
+    jeu.cpp \
+    terrain.cpp \
+    score.cpp \
+    cible.cpp
 
 HEADERS  += webcamwidget.h \
     myglwidget.h \
-    window.h
+    window.h \
+    trebuchet.h \
+    jeu.h \
+    terrain.h \
+    score.h \
+    cible.h
 
 FORMS    += webcamwidget.ui \
     window.ui
@@ -42,5 +50,6 @@ LIBS += -L$$(OPENCV_DIR)\lib \
     -lopencv_imgproc2412 \
     -lopencv_features2d2412 \
     -lopencv_calib3d2412
+
 
 BISOUS BRO

@@ -35,6 +35,12 @@ void MyGLWidget::initializeGL()
 
     static GLfloat lightPosition[4] = { 0, 0, 10, 1.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
+
+    //Méthode finale :
+    terrain.init();
+    trebuchet.init();
+    cible.init();
+
 }
 
 void MyGLWidget::paintGL()
@@ -96,4 +102,6 @@ void MyGLWidget::draw()
         glVertex3f(-1,-1,0);
         glVertex3f(0,0,1.2);
     glEnd();
+
+    //Méthode finale
 }

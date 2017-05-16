@@ -12,7 +12,9 @@ void Trebuchet::draw()
 
 void Trebuchet::init()
 {
-
+    loadLogoTexture();
+    loadWoodTexture();
+    //TODO Initialize Trebuchet
 }
 
 void Trebuchet::loadLogoTexture()

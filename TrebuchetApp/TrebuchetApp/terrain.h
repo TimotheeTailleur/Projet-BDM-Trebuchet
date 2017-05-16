@@ -16,12 +16,14 @@ public:
 
     //Chargement des textures
     void loadGrassTexture();
+    void loadFenceTexture();
 
 protected:
     Cible target_; //Cible du jeu
 
     GLuint GLtexture[1];
     GLuint grassTexture[1]; //Texture Herbe
+    GLuint fenceTexture[1]; //Texture Grillage
 };
 
 #endif // TERRAIN_H

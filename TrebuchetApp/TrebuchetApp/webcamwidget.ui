@@ -28,11 +28,22 @@
     </widget>
    </item>
    <item>
-    <widget class="QPushButton" name="webcamCapture">
-     <property name="text">
-      <string>Capturer frame</string>
-     </property>
-    </widget>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="webcamCapture">
+       <property name="text">
+        <string>Lancer le tracking</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="reinitCapture">
+       <property name="text">
+        <string>Réinitialiser tracking</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
    <item>
     <widget class="QLabel" name="label">

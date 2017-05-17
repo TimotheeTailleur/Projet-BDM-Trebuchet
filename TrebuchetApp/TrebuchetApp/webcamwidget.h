@@ -7,6 +7,7 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
+#include <opencv2/objdetect/objdetect.hpp>
 using namespace cv;
 
 
@@ -21,6 +22,8 @@ class WebcamWidget : public QWidget
 public:
     explicit WebcamWidget(QWidget *parent = 0);
     ~WebcamWidget();
+    void followDetection();
+    void capture();
 
 private:
 
@@ -44,17 +47,20 @@ private:
     int templateHeight_=50;
 
     QPushButton webcamCapture;
+    QPushButton reinitCapture;
 
     Vector<cv::Vec3f> vecCircles_;
     Vector<cv::Vec3f>::iterator itrCircles_;
 
-
     QTimer * tmrTimer_; //Car on ne peut pas avoir while(1) ou while(true) sinon le processeur ne pourra pas gérer.
+
+    bool haveYouClicked_ = false;
+
 private slots:
     void update();
     void on_webcamCapture_clicked();
+    void on_reinitCapture_clicked();
 
-   // void on_webcamCapture_clicked();
 };
 
 #endif // WEBCAMWIDGET_H

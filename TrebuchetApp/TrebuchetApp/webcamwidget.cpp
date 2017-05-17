@@ -1,5 +1,6 @@
 #include "webcamwidget.h"
 #include "ui_webcamwidget.h"
+#include <QDebug>
 
 WebcamWidget::WebcamWidget(QWidget *parent) :
     QWidget(parent),
@@ -17,10 +18,6 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
     tmrTimer_ = new QTimer(this);
     connect(tmrTimer_, SIGNAL(timeout()), this, SLOT(update()));
     tmrTimer_->start(10); // 10 ms
-
-
-    //connect(webcamCapture_, SIGNAL(clicked()), this, SLOT(detect()));
-    QMetaObject::connectSlotsByName(this);
 }
 
 WebcamWidget::~WebcamWidget()
@@ -38,60 +35,32 @@ void WebcamWidget:: update(){
     frameWidth_=cap_.get(CV_CAP_PROP_FRAME_WIDTH);
     frameHeight_=cap_.get(CV_CAP_PROP_FRAME_HEIGHT);
 
-    // Initialisation de la Template de Capture :
-
-    //Rect templateRect((frameWidth-templateWidth_)/2,(frameHeight-templateHeight_)/2,templateWidth_,templateHeight_);
-
-
-    // Traitement :
-
 
 
     if(matOriginal_.empty()) return; // eviter les redondances ??? éviter de perdre du temps ??
-    //inRange(matOriginal_, Scalar(0,0,175), Scalar(100,100,256), matProcessed_);
-    //GaussianBlur(matProcessed_, matProcessed_, Size(9,9), 1.5);
-    //HoughCircles(matProcessed_, vecCircles_, CV_HOUGH_GRADIENT, 2, matProcessed_.rows / 4, 100, 50, 10, 400);
 
-    /*for(itrCircles_ = vecCircles_.begin(); itrCircles_ != vecCircles_.end(); itrCircles_++) {
-        circle(matOriginal_, Point((int)(*itrCircles_)[0], (int)(*itrCircles_)[1]), 3, Scalar(0,255,0), CV_FILLED);
-        circle(matOriginal_, Point((int)(*itrCircles_)[0], (int)(*itrCircles_)[1]), (int)(*itrCircles_)[2], Scalar(0,0,255), 3);
-        }
-    */
-
+    // Rajout de couleur
     cvtColor(matOriginal_, matOriginal_, CV_BGR2RGB);
 
+    // Récupération des captures + affichages dans le label.
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
-    //QImage qimgProcessed_((uchar*)matProcessed_.data, matProcessed_.cols, matProcessed_.rows, matProcessed_.step, QImage::Format_Indexed8);
-
     flip(matOriginal_,matOriginal_,1);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
-
-
-
     }
-    /*
-    cvtColor(matOriginal_,matOriginal_,CV_BGR2RGB);
-    QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Forma t_RGB888);
 
-    ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
-*/
+void WebcamWidget::on_webcamCapture_clicked(){
 
-
-void WebcamWidget::detect(){
-
-}
-
-
-void WebcamWidget::on_webcamCapture_clicked()
-{
-
+    // Initialisation de la Template de Capture :
 
     Rect rectProcessing((frameWidth_-templateWidth_)/2,(frameHeight_-templateHeight_)/2,templateWidth_,templateHeight_);
+
+    // Récupération du carré capturé
     Mat temp(matOriginal_, rectProcessing);
     temp.copyTo(matProcessing_);
+
+    // On affiche l'image capturée pour connaitre sur quoi est fait le traitement
     QImage qimgProcessing_((uchar*)matProcessing_.data, matProcessing_.cols, matProcessing_.rows, matProcessing_.step, QImage::Format_RGB888);
-    ui->label_2->setPixmap(QPixmap::fromImage(qimgProcessing_));
-    waitKey(5);
+    ui->label->setPixmap(QPixmap::fromImage(qimgProcessing_));
 
     rectangle(matOriginal_, rectProcessing, Scalar(0,255,0),2,8,0);
 

@@ -50,11 +50,11 @@ private:
 
 
     QTimer * tmrTimer_; //Car on ne peut pas avoir while(1) ou while(true) sinon le processeur ne pourra pas gérer.
-public slots:
+private slots:
     void update();
-    void detect();
-
     void on_webcamCapture_clicked();
+
+   // void on_webcamCapture_clicked();
 };
 
 #endif // WEBCAMWIDGET_H

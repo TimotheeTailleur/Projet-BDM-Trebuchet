@@ -67,7 +67,6 @@
       <property name="cursor">
        <cursorShape>CrossCursor</cursorShape>
       </property>
-      <zorder>webcamWidget</zorder>
      </widget>
     </item>
     <item>
@@ -95,16 +94,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="webcamCapture_">
-        <property name="text">
-         <string>Capturer la frame</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QWidget" name="widget" native="true">
-        <zorder>webcamWidget</zorder>
-       </widget>
+       <widget class="QWidget" name="captureResult_" native="true"/>
       </item>
      </layout>
     </item>

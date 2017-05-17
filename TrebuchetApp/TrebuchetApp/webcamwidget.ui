@@ -27,6 +27,20 @@
      </property>
     </widget>
    </item>
+   <item>
+    <widget class="QPushButton" name="webcamCapture">
+     <property name="text">
+      <string>Capturer frame</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

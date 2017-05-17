@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-11T13:52:59
+# Project created by QtCreator 2017-04-12T15:07:22
 #
 #-------------------------------------------------
 
@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = Projet_Trebuchet
+TARGET = TrebuchetApp
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -24,19 +24,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    webcamwidget.cpp
+        webcamwidget.cpp
 
-HEADERS  += mainwindow.h \
-    webcamwidget.h
+HEADERS  += webcamwidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += webcamwidget.ui
 
-INCLUDEPATH +=$$(OPENCV_DIR)\..\..\include
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.11.1
 
-LIBS += -L$$(OPENCV_DIR)\lib \
-    -lopencv_core2413 \
-    -lopencv_highgui2413 \
-    -lopencv_imgproc2413 \
-    -lopencv_features2d2413 \
-    -lopencv_calib3d2413
+INCLUDEPATH += /usr/local/Cellar/opencv/2.4.13.2/include
+
+LIBS += -L/usr/local/Cellar/opencv/2.4.13.2/lib \
+    -lopencv_core \
+    -lopencv_highgui \
+    -lopencv_imgproc \
+    -lopencv_features2d \
+    -lopencv_calib3d

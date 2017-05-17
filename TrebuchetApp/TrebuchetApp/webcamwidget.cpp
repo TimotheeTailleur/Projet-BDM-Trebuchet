@@ -116,5 +116,5 @@ void WebcamWidget::followDetection(){
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
 
     initialX_ = resultRect.x;
-    initialY_ = resultRect.y
+    initialY_ = resultRect.y;
 }

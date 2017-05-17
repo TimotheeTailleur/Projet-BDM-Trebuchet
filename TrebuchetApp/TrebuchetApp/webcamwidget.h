@@ -46,6 +46,9 @@ private:
     int templateWidth_=50;
     int templateHeight_=50;
 
+    int initialX_;
+    int initialY_;
+
     QPushButton webcamCapture;
     QPushButton reinitCapture;
 

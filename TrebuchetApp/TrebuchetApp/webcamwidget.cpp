@@ -55,6 +55,21 @@ void WebcamWidget:: update(){
     }
 }
 
+void WebcamWidget::capture(){
+    // Initialisation + Dessin de la Template de Capture :
+
+    Rect rectProcessing((frameWidth_-templateWidth_)/2,(frameHeight_-templateHeight_)/2,templateWidth_,templateHeight_);
+    rectangle(matOriginal_, rectProcessing, Scalar(255,0,0),2,8,0);
+
+    // Récupération des captures + affichages dans le label.
+
+    QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
+    flip(matOriginal_,matOriginal_,1);
+    ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
+
+}
+
+
 void WebcamWidget::on_webcamCapture_clicked(){
 
     haveYouClicked_ = true;
@@ -78,20 +93,6 @@ void WebcamWidget::on_reinitCapture_clicked(){
     haveYouClicked_ = false;
 }
 
-void WebcamWidget::capture(){
-    // Initialisation + Dessin de la Template de Capture :
-
-    Rect rectProcessing((frameWidth_-templateWidth_)/2,(frameHeight_-templateHeight_)/2,templateWidth_,templateHeight_);
-    rectangle(matOriginal_, rectProcessing, Scalar(255,0,0),2,8,0);
-
-    // Récupération des captures + affichages dans le label.
-
-    QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
-    flip(matOriginal_,matOriginal_,1);
-    ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
-
-}
-
 void WebcamWidget::followDetection(){
 
     // Creation des lignes/colonnes de la matrice de résultats:
@@ -111,9 +112,9 @@ void WebcamWidget::followDetection(){
     Rect resultRect = Rect(maxLoc.x, maxLoc.y, templateWidth_, templateHeight_);
     rectangle(matOriginal_,resultRect, Scalar(0,255,0), 2, 8, 0);
 
-
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
 
-    //qDebug() << "Position tracker :"<< resultRect;
+    initialX_ = resultRect.x;
+    initialY_ = resultRect.y
 }

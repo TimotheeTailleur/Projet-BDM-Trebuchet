@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/src">
+        <file>img/fence.bmp</file>
+        <file>img/grass.tiff</file>
+        <file>img/wood.bmp</file>
+        <file>img/TSE.bmp</file>
+    </qresource>
+</RCC>

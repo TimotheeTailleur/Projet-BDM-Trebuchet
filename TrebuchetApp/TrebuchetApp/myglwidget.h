@@ -7,6 +7,9 @@
 #include <glu.h>
 #include <QThread>
 
+#include "trebuchet.h"
+#include "cible.h"
+#include "terrain.h"
 
 class MyGLWidget : public QGLWidget
 {
@@ -34,6 +37,10 @@ signals:
 
 private:
     void draw();
+
+    Terrain terrain;
+    Trebuchet trebuchet;
+    Cible cible;
 };
 
 #endif // MYGLWIDGET_H

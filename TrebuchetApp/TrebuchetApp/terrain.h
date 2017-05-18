@@ -2,8 +2,8 @@
 #define TERRAIN_H
 #include "cible.h"
 #include <QImage>
-#include <GL/glu.h>
-#include <GL/gl.h>
+#include <glu.h>
+#include <gl.h>
 #include <QtOpenGL>
 
 

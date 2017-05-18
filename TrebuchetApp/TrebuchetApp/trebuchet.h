@@ -1,7 +1,7 @@
 #ifndef TREBUCHET_H
 #define TREBUCHET_H
 #include <QImage>
-#include <GL/glu.h>
+#include <glu.h>
 
 class Trebuchet
 {

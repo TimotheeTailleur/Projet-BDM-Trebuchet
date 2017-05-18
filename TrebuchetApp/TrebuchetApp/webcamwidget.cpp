@@ -117,4 +117,5 @@ void WebcamWidget::followDetection(){
 
     initialX_ = resultRect.x;
     initialY_ = resultRect.y;
+
 }

@@ -2,15 +2,17 @@
 
 #include <QtWidgets>
 #include "myglwidget.h"
+#include <QDebug>
+#include <QtOpenGL>
 
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
-    xRot = 0;
-    yRot = 0;
+    xRot = 198;
+    yRot = 88;
     zRot = 0;
-    //initializeGL();
+
     paintGL();
 }
 
@@ -18,23 +20,23 @@ MyGLWidget::MyGLWidget(QWidget *parent)
 
 MyGLWidget::~MyGLWidget()
 {
-    qDebug()<<"Fin myglwidget";
 }
 
 void MyGLWidget::initializeGL()
 {
-    qglClearColor(Qt::black);
+    // Couleur de fond = bleu ciel pour simuler un ciel clair.
+    qglClearColor(Qt::cyan);
 
-    glEnable(GL_DEPTH_TEST);
-    glEnable(GL_CULL_FACE);
-    glShadeModel(GL_SMOOTH);
+    // Initialisation de l'éclairage/ombrage:
+    GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
+    glShadeModel (GL_SMOOTH);
+    glLightfv(GL_LIGHT0, GL_POSITION, light_position);
+
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
+    glEnable(GL_DEPTH_TEST);
 
-    static GLfloat lightPosition[4] = { 0, 0, 10, 1.0 };
-    glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-
-    //Méthode finale :
+    //Méthodes d'initialisations finales :
     terrain.init();
     trebuchet.init();
     cible.init();
@@ -45,10 +47,17 @@ void MyGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
-    glTranslatef(0.0, 0.0, -10.0);
-    glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
-    glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
-    glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);
+
+    //Initialisation du système de coordonnées.
+    glRotatef(90.0,1.0,0.0,0.0);
+    glRotatef(90.0,0.0,0.0,1.0);
+
+    glTranslatef(-10, 0, 0);
+    glRotatef(-xRot , 0.0, 1.0, 0.0);
+    glRotatef(-yRot , 0.0, 0.0, 1.0);
+    glRotatef(-zRot , 1.0, 0.0, 0.0);
+
+
     draw();
 }
 
@@ -59,11 +68,7 @@ void MyGLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-#ifdef QT_OPENGL_ES_1
-    glOrthof(-2, +2, -2, +2, 1.0, 15.0);
-#else
-    glOrtho(-2, +2, -2, +2, 1.0, 15.0);
-#endif
+    gluPerspective(70,((float)width/(float)height),0.01,30);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -79,9 +84,9 @@ void MyGLWidget::draw()
 static void qNormalizeAngle(int &angle)
 {
     while (angle < 0)
-        angle += 360 * 16;
+        angle += 360 * 1;
     while (angle > 360)
-        angle -= 360 * 16;
+        angle -= 360 * 1;
 }
 
 void MyGLWidget::setXRotation(int angle)
@@ -133,4 +138,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
     }
 
     lastPos = event->pos();
+    qDebug() << "x" << xRot;
+    qDebug() << "y" <<yRot;
+    qDebug() << "z" << zRot;
 }

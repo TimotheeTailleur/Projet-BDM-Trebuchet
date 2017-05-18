@@ -3,6 +3,9 @@
 #include "cible.h"
 #include <QImage>
 #include <GL/glu.h>
+#include <GL/gl.h>
+#include <QtOpenGL>
+
 
 class Terrain
 {

@@ -28,6 +28,9 @@ public:
     void loadGrassTexture();
     void loadFenceTexture();
 
+
+
+
 protected:
     Cible target_; //Cible du jeu
 

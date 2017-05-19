@@ -115,7 +115,11 @@ void WebcamWidget::followDetection(){
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
 
-    initialX_ = resultRect.x;
-    initialY_ = resultRect.y;
+    initialX_ = resultRect.y + 103;
+    initialY_ = resultRect.x - 46;
+
+    // On emet le signal pour récuperer les coordonnées:
+
+    emit getCoords(initialX_, initialY_);
 
 }

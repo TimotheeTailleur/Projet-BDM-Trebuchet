@@ -19,6 +19,9 @@ protected:
 
 private:
     Ui::Window *ui;
+
+private slots:
+    void setRot();
 };
 
 #endif // WINDOW_H

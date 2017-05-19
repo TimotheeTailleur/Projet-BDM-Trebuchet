@@ -2,9 +2,16 @@
 #define TERRAIN_H
 #include "cible.h"
 #include <QImage>
-#include <glu.h>
-#include <gl.h>
+
 #include <QtOpenGL>
+
+/*Dépendances PC*/
+#include <GL/glu.h>
+#include <GL/gl.h>
+
+/*Dépendances Mac
+* #include <glu.h>
+* #include <gl.h> */
 
 
 class Terrain

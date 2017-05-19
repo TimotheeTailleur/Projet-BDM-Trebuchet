@@ -78,6 +78,7 @@ void MyGLWidget::draw()
     //Méthode finale
 
    terrain.draw();
+   trebuchet.draw();
 }
 
 

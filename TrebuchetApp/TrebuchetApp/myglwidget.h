@@ -4,18 +4,17 @@
 #define MYGLWIDGET_H
 
 #include <QGLWidget>
-#include <glu.h>
 #include <QThread>
 #include <QDebug>
 #include <QTimer>
 
-/*Dépendances Windows
+//Dépendances Windows
 #include <QtOpenGL>
-#include <GL/glu.h>*/
+#include <GL/glu.h>
 
-//Dépendances Mac
+/*Dépendances Mac
 #include <OpenGL.h>
-#include <glu.h>
+#include <glu.h> */
 
 #include "trebuchet.h"
 #include "cible.h"

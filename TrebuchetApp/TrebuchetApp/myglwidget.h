@@ -30,7 +30,8 @@ public:
 
 signals:
 
-public slots:
+public:
+    void rotate(int xRot, int yRot, int nbPas);
 
 protected:
     void initializeGL();
@@ -46,6 +47,10 @@ public slots:
     void setYRotation(int angle);
     void setZRotation(int angle);
 
+    // slot pour récuperer les coordonnees de la main:
+    void getCoords(int x, int y);
+
+
 signals:
     // signaux pour rotation x,y,z
     void xRotationChanged(int angle);
@@ -53,6 +58,8 @@ signals:
     void zRotationChanged(int angle);
 
 private:
+
+
     void draw();
 
     Terrain terrain;
@@ -63,6 +70,7 @@ private:
     int yRot;
     int zRot;
 
+    int angle;
 
 
     QPoint lastPos;

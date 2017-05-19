@@ -24,6 +24,8 @@ public:
     ~WebcamWidget();
     void followDetection();
     void capture();
+    int getInitialX() {return initialX_;}
+    int getInitialY() {return initialY_;}
 
 private:
 
@@ -63,6 +65,9 @@ private slots:
     void update();
     void on_webcamCapture_clicked();
     void on_reinitCapture_clicked();
+
+signals:
+    void getCoords(int x,int y);
 
 };
 

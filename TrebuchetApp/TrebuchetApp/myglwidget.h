@@ -69,6 +69,9 @@ private:
     int yRot;
     int zRot;
 
+    int xPreviousHandPos;
+    int yPreviousHandPos;
+
     int angle;
 
 

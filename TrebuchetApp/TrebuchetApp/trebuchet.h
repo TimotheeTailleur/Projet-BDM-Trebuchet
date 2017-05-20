@@ -34,12 +34,11 @@ public:
     void createFootDisplayList();
 
 protected:
-    double angleTrebuchet_;
-    double inclinaisonBras_;
+    double angleTrebuchet_; //Angle pour rotation
+    double inclinaisonBras_; //Inclinaison du bras
 
     GLuint footList; // GLuint qui contiendra la display list d'un pied du trebuchet
 
-    GLuint GLtextures[2];
     GLuint logoTexture[1]; //Texture logo TSE
     GLuint woodTexture[1]; //Texture bois du trébuchet
 };

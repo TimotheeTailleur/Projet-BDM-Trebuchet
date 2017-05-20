@@ -52,7 +52,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,1.0,0.0,0.0);
     glRotatef(90.0,0.0,0.0,1.0);
 
-    glTranslatef(-10, 0, 0);
+    glTranslatef(-23, 0, 0);
     glRotatef(-xRot , 0.0, 1.0, 0.0);
     glRotatef(-yRot , 0.0, 0.0, 1.0);
     glRotatef(-zRot , 1.0, 0.0, 0.0);
@@ -137,7 +137,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
         setXRotation(xRot + 8 * dy);
         setZRotation(zRot + 8 * dx);
     }
-
+    qDebug()<<event->x();
     lastPos = event->pos();
 }
 
@@ -165,36 +165,22 @@ void MyGLWidget::rotate(int xRot, int yRot, int nbPas){
 
 void MyGLWidget::getCoords(int x, int y){
 
-
    // Dans cette méthode, on réutilise les coordonnées récupérées par le tracking de la webcam.
 
+    double angleTrebuchet=trebuchet.getAngleTrebuchet();
 
-    // On réalise des if / else pour éviter que l'utilisateur tourne trop son trébuchet.
-    if (y < 66){
-        yRot = 66;
-        if (x < 185) xRot = 185;
-        else if(x> 210) xRot = 210;
-        else xRot = x;
+    if (y-yRot>0)
+    {
+        trebuchet.setAngleTrebuchet(angleTrebuchet+(y-yPreviousHandPos)*0.1);
+        xPreviousHandPos=x;
+        yPreviousHandPos=y;
 
-
+    }else
+    {
+        trebuchet.setAngleTrebuchet(angleTrebuchet-abs(y-yPreviousHandPos)*0.1);
+        xPreviousHandPos=x;
+        yPreviousHandPos=y;
     }
-    else if (y > 117){
-        yRot = 117;
-        if (x < 185) xRot = 185;
-        else if(x> 210) xRot = 210;
-        else xRot = x;
-    }
-
-    else{
-        if (x < 185) xRot = 185;
-        else if(x> 210) xRot = 210;
-        else xRot = x;
-        yRot = y;
-    }
-
-    qDebug() << x << " et y " << y;
-
-    //angle = maxAngle-2*xRot*maxAngle;
 
     this->update();
 

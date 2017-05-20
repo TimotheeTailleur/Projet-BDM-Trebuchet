@@ -3,7 +3,7 @@
 
 Trebuchet::Trebuchet()
 {
-    angleTrebuchet_=0.0;
+    angleTrebuchet_=270;
     inclinaisonBras_=0.0;
 }
 
@@ -13,9 +13,11 @@ void Trebuchet::draw()
 
     glPushMatrix();
         //translation par rapport au sol
-        glTranslated(0,0,0.8);
+        glTranslated(0,-14.5,0);
 
         glColor3ub(255,240,230);
+
+        glRotatef(angleTrebuchet_,0,0,1.0);
 
         //pied gauche
         glPushMatrix();
@@ -161,7 +163,17 @@ double Trebuchet::getInsclinaisonTrebuchet()
 void Trebuchet::setAngleTrebuchet(double angle)
 
 {
-    angleTrebuchet_=angle;
+    if (angle<255)
+    {
+        angleTrebuchet_=255;
+    }else if (angle>290)
+    {
+        angleTrebuchet_=290;
+    }else
+    {
+        angleTrebuchet_=angle;
+
+    }
 }
 
 void Trebuchet::setInclinaisonTrebuchet(double inclinaison)

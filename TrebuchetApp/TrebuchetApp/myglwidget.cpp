@@ -68,7 +68,7 @@ void MyGLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(70,((float)width/(float)height),0.01,30);
+    gluPerspective(100,((float)width/(float)height),0.01,100);
     glMatrixMode(GL_MODELVIEW);
 }
 

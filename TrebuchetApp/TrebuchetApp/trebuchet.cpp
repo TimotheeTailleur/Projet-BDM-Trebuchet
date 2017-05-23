@@ -3,13 +3,12 @@
 
 Trebuchet::Trebuchet()
 {
-    angleTrebuchet_=270;
-    inclinaisonBras_=0.0;
+    angleTrebuchet_=265;
+    inclinaisonBras_=14;
 }
 
 void Trebuchet::draw()
 {
-    qDebug()<<"Trebuchet::draw()";
 
     glPushMatrix();
         //translation par rapport au sol
@@ -37,7 +36,7 @@ void Trebuchet::draw()
             glTranslated(0,0,3*0.97);
             glRotated(inclinaisonBras_,0,1,0);
             glTranslated(-3*1.5/4.75,0,0);
-            drawQuad(3*1.5,0.2*1.5);
+            drawQuad(3*1.5,0.3*1.5);
 
             //fil et contrepoids
             glTranslated(0.2*0.75,0,0.2*0.75);
@@ -50,7 +49,7 @@ void Trebuchet::draw()
 
             glEnd();
             glTranslated(-0.25,0,-0.75);
-            drawQuad(0.6,0.5);
+            drawQuad(0.6,2*0.5);
         glPopMatrix();
 
 
@@ -59,14 +58,14 @@ void Trebuchet::draw()
             glColor3ub(50,50,50);
             glTranslated(0,1.4/2,3*0.97);
             glRotated(-90,0,0,1);
-            drawQuad(1.4,0.1);
+            drawQuad(1.4,2*0.1);
         glPopMatrix();
     glPopMatrix();
 }
 
 void Trebuchet::drawQuad(double length, double width)
 {
-    qDebug()<<"Trebuchet::drawQuad";
+    glBindTexture(GL_TEXTURE_2D, woodTexture[0]);
     glBegin(GL_QUADS);
         glNormal3d(-1,0,0);
         //face devant
@@ -163,12 +162,12 @@ double Trebuchet::getInsclinaisonTrebuchet()
 void Trebuchet::setAngleTrebuchet(double angle)
 
 {
-    if (angle<255)
+    if (angle<230)
     {
-        angleTrebuchet_=255;
-    }else if (angle>290)
+        angleTrebuchet_=230;
+    }else if (angle>295)
     {
-        angleTrebuchet_=290;
+        angleTrebuchet_=295;
     }else
     {
         angleTrebuchet_=angle;
@@ -178,7 +177,15 @@ void Trebuchet::setAngleTrebuchet(double angle)
 
 void Trebuchet::setInclinaisonTrebuchet(double inclinaison)
 {
-    inclinaisonBras_=inclinaison;
+    if (inclinaison > 36){
+        inclinaisonBras_ = 36;
+    }
+    else if(inclinaison < 0){
+        inclinaisonBras_ = 0;
+    }
+    else{
+        inclinaisonBras_=inclinaison;
+    }
 }
 
 /* Méthodes de chargement des textures */

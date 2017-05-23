@@ -13,6 +13,9 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     yRot = 88;
     zRot = 0;
 
+    xPreviousHandPos = 198;
+    yPreviousHandPos = 88;
+
     paintGL();
 }
 
@@ -68,7 +71,7 @@ void MyGLWidget::resizeGL(int width, int height)
 
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(100,((float)width/(float)height),0.01,100);
+    gluPerspective(100,((float)width/(float)height),0.1,100);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -141,46 +144,28 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
     lastPos = event->pos();
 }
 
-
-void MyGLWidget::rotate(int xRot, int yRot, int nbPas){
-    int initXRot = trebuchet.getAngleTrebuchet();
-    int initYRot = trebuchet.getInsclinaisonTrebuchet();
-
-    int tmpX;
-    int tmpY;
-
-    for (int i=0; i<nbPas+1; i++)
-    {
-        tmpX=(initXRot*(nbPas-i)+(xRot*i))/nbPas;
-        tmpY=(initYRot*(nbPas-i)+(yRot*i))/nbPas;
-        trebuchet.setAngleTrebuchet(tmpX);
-        trebuchet.setInclinaisonTrebuchet(tmpY);
-        trebuchet.draw();
-        updateGL();
-        QThread::usleep(100);
-
-
-    }
-}
-
 void MyGLWidget::getCoords(int x, int y){
 
    // Dans cette méthode, on réutilise les coordonnées récupérées par le tracking de la webcam.
 
-    double angleTrebuchet=trebuchet.getAngleTrebuchet();
+    //double angleTrebuchet=trebuchet.getAngleTrebuchet();
+    qDebug() << x;
 
-    if (y-yRot>0)
+    trebuchet.setAngleTrebuchet(y);
+    trebuchet.setInclinaisonTrebuchet(x);
+
+    /*if (y-yRot>0)
     {
-        trebuchet.setAngleTrebuchet(angleTrebuchet+(y-yPreviousHandPos)*0.1);
+        trebuchet.setAngleTrebuchet(angleTrebuchet+(y-yPreviousHandPos)*0.3);
         xPreviousHandPos=x;
         yPreviousHandPos=y;
 
     }else
     {
-        trebuchet.setAngleTrebuchet(angleTrebuchet-abs(y-yPreviousHandPos)*0.1);
+        trebuchet.setAngleTrebuchet(angleTrebuchet-abs(y-yPreviousHandPos)*0.3);
         xPreviousHandPos=x;
         yPreviousHandPos=y;
-    }
+    }*/
 
     this->update();
 

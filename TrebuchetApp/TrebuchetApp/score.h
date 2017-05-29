@@ -11,16 +11,14 @@ class Score
 {
 public:
     Score(int difficultyLevel=0);
-    Score(QString name, QTime time, int difficultyLevel, int points);
+    Score(QString name, int difficultyLevel, int points);
 
     //Getters & Setters
     QString getName();
-    QTime getTime();
     int getDifficultyLevel();
     int getPoints();
 
     void setName(string name);
-    void setTime(string time);
     void setDifficultyLevel(int difficultyLevel);
     void setPoints(int points);
 
@@ -29,7 +27,6 @@ public:
     void loadScore(ifstream &is);
 protected:
     QString name_; // Nom du joueur
-    QTime time_;    //Temps
     int difficultyLevel_;    //Niveau de difficulté (1,2 ou 3)
     int points_;     //Points marqués
 

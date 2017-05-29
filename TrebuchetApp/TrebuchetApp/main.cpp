@@ -3,10 +3,12 @@
 #include <QDesktopWidget>
 #include <QDebug>
 
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
         Window window;
+
         window.resize(window.sizeHint());
 
         int desktopArea = QApplication::desktop()->width() *

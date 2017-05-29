@@ -86,6 +86,7 @@ void WebcamWidget::on_webcamCapture_clicked(){
     QImage qimgProcessing_((uchar*)matProcessing_.data, matProcessing_.cols, matProcessing_.rows, matProcessing_.step, QImage::Format_RGB888);
     ui->label->setPixmap(QPixmap::fromImage(qimgProcessing_));
 
+    emit trackingStarted();
 
 }
 

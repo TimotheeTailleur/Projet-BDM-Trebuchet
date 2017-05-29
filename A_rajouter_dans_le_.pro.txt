@@ -1,7 +1,6 @@
-Dans les sources : trebuchet.cpp, jeu.cpp, terrain.cpp, score.cpp, cible.cpp
-Dans les hearders : trebuchet.h, jeu.h, terrain.h score.h, cible.h
-RESOURCES += \
-    src.qrc
+Dans les sources : projectile.cpp, initialogbox.cpp
+Dans les hearders : projectile.h, initdialogbox.h
+Dans les forms : initdialogbox.ui
 
 Chez moi ça ressemble à ça :
 #-------------------------------------------------
@@ -25,7 +24,9 @@ SOURCES += main.cpp\
     jeu.cpp \
     terrain.cpp \
     score.cpp \
-    cible.cpp
+    cible.cpp \
+    projectile.cpp \
+    initdialogbox.cpp
 
 HEADERS  += webcamwidget.h \
     myglwidget.h \
@@ -34,10 +35,13 @@ HEADERS  += webcamwidget.h \
     jeu.h \
     terrain.h \
     score.h \
-    cible.h
+    cible.h \
+    projectile.h \
+    initdialogbox.h
 
 FORMS    += webcamwidget.ui \
-    window.ui
+    window.ui \
+    initdialogbox.ui
 
 
 LIBS += -lopengl32 -lglu32

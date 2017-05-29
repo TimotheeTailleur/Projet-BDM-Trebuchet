@@ -19,6 +19,7 @@
 #include "trebuchet.h"
 #include "cible.h"
 #include "terrain.h"
+#include "projectile.h"
 
 class MyGLWidget : public QGLWidget
 {
@@ -64,6 +65,7 @@ private:
     Terrain terrain;
     Trebuchet trebuchet;
     Cible cible;
+    Projectile projectile;
 
     int xRot;
     int yRot;

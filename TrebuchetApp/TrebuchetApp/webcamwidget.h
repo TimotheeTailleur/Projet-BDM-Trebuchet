@@ -69,6 +69,8 @@ private slots:
 signals:
     void getCoords(int x,int y);
 
+    void trackingStarted();
+
 };
 
 #endif // WEBCAMWIDGET_H

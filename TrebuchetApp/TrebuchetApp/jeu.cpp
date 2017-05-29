@@ -4,9 +4,9 @@ using namespace std;
 
 Jeu::Jeu()
 {
-    difficultyLevel_=0;
-    numberOfTargets_=0;
     scoreList_={};
+    tempsJeu_= new QTime(0,0,0);
+
 }
 
 
@@ -27,9 +27,9 @@ std::vector<Score> Jeu::getScoreList()
 
  void Jeu::setDifficultyLevel(int difficultyLevel)
  {
-     if (difficultyLevel > 3)
+     if (difficultyLevel > 2)
      {
-         difficultyLevel_=3;
+         difficultyLevel_=2;
      }else
      {
         difficultyLevel_=difficultyLevel;
@@ -66,4 +66,21 @@ std::vector<Score> Jeu::getScoreList()
         it->loadScore(is);
     }
     is.close();
+ }
+
+ void Jeu::startGame(int difficultyLevel, int numberOfTargets){
+
+     this->setDifficultyLevel(difficultyLevel);
+     this->setNumberOfTargets(numberOfTargets);
+ }
+
+ QTime* Jeu::getTime()
+ {
+     return tempsJeu_;
+ }
+
+ void Jeu::updateTimes()
+ {
+   *tempsJeu_= tempsJeu_->addSecs(1);
+
  }

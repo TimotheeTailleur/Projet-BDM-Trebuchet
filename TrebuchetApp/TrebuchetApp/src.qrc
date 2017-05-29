@@ -4,5 +4,6 @@
         <file>img/wood.bmp</file>
         <file>img/TSE.bmp</file>
         <file>img/fence.bmp</file>
+        <file>img/target2.bmp</file>
     </qresource>
 </RCC>

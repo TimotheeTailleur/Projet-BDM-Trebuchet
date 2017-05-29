@@ -32,10 +32,10 @@ void MyGLWidget::initializeGL()
 
     // Initialisation de l'éclairage/ombrage:
     GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
+
     glShadeModel (GL_SMOOTH);
     glLightfv(GL_LIGHT0, GL_POSITION, light_position);
 
-    glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
     glEnable(GL_DEPTH_TEST);
 
@@ -82,6 +82,8 @@ void MyGLWidget::draw()
 
    terrain.draw();
    trebuchet.draw();
+   cible.draw(10,10);
+   projectile.draw();
 }
 
 
@@ -140,7 +142,6 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
         setXRotation(xRot + 8 * dy);
         setZRotation(zRot + 8 * dx);
     }
-    qDebug()<<event->x();
     lastPos = event->pos();
 }
 

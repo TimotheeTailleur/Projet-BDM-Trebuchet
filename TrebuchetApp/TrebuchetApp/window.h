@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include <QKeyEvent>
+#include <QTimer>
+
+#include "jeu.h"
+#include "initdialogbox.h"
 
 namespace Ui {
 class Window;
@@ -19,9 +23,18 @@ protected:
 
 private:
     Ui::Window *ui;
+    Jeu jeu_;
+
+    QString playerName_;
+    int difficultyLevel_;
+    int numberOfTargets_;
+
+     QTimer *timer_ ; //Timer pour MàJ de l'affichage des temps de jeu
 
 private slots:
     void setRot();
+    void startGame(); //Démarrage du jeu après lancement du tracking par webcam
+    void updateTimes(); //Mise à jour de l'affichage des temps toutes les 1000ms
 };
 
 #endif // WINDOW_H

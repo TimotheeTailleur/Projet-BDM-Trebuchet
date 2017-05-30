@@ -25,7 +25,7 @@ Window::Window(QWidget *parent) :
     connect(ui->webcamWidget,SIGNAL(trackingStarted()),SLOT(startGame()));
 
     //Connexion lancement du projectile :
-    connect(ui->webcamWidget,SIGNAL(launch()),SLOT(launch()));
+    connect(ui->webcamWidget,SIGNAL(launch(int)),SLOT(launch(int)));
 
 }
 
@@ -42,22 +42,7 @@ void Window::keyPressEvent(QKeyEvent *e)
         QWidget::keyPressEvent(e);
 }
 
-void Window::setRot(){
-   /* int x = ui->webcamWidget->getInitialX();
-    int y = ui->webcamWidget->getInitialY();
 
-    x = x*20-10;
-    y = y*20-10;
-
-    ui->glWidget->rotate(x,y,20);*/
-}
-
-
-/*
- * Slot de démarrage du jeu :
- * On initialise les paramètres du jeu, on lance l'affichage des temps
- * et on définit le timeout du timer qui mettra à jour les temps affichés
- * */
 void Window::startGame()
 {
     jeu_.startGame(difficultyLevel_,numberOfTargets_);
@@ -77,6 +62,8 @@ void Window::updateTimes()
 }
 
 // Lancement du projectile
-void Window::launch(){
+void Window::launch(int force){
+    lancementEnCours_ = true;
 
+    ui->glWidget->launch(force);
 }

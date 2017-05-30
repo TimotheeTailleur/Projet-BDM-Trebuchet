@@ -8,13 +8,13 @@
 #include <QDebug>
 #include <QTimer>
 
-//Dépendances Windows
+/*Dépendances Windows
 #include <QtOpenGL>
-#include <GL/glu.h>
+#include <GL/glu.h>*/
 
-/*Dépendances Mac
+/*Dépendances Mac*/
 #include <OpenGL.h>
-#include <glu.h> */
+#include <glu.h>
 
 #include "trebuchet.h"
 #include "cible.h"
@@ -31,7 +31,7 @@ public:
 signals:
 
 public:
-    void rotate(int xRot, int yRot, int nbPas);
+    void launch(int force);
 
 protected:
     void initializeGL();
@@ -49,6 +49,7 @@ public slots:
 
     // slot pour récuperer les coordonnees de la main:
     void getCoords(int x, int y);
+
 
 
 signals:
@@ -76,6 +77,7 @@ private:
 
     int angle;
 
+    Projectile balle_lancee;
 
     QPoint lastPos;
 };

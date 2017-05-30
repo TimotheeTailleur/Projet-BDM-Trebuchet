@@ -2,9 +2,9 @@
 
 Projectile::Projectile()
 {
-    x_=1;
-    y_=1;
-    z_=1;
+    x_=0;
+    y_=0;
+    z_=4;
 }
 
 

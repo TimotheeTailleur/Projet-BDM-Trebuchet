@@ -83,7 +83,6 @@ void MyGLWidget::draw()
    terrain.draw();
    trebuchet.draw();
    cible.draw(10,10);
-   //projectile.draw();
 }
 
 
@@ -127,6 +126,7 @@ void MyGLWidget::setZRotation(int angle)
 
 void MyGLWidget::mousePressEvent(QMouseEvent *event)
 {
+    //this->launch(15);
     lastPos = event->pos();
 }
 
@@ -153,4 +153,49 @@ void MyGLWidget::getCoords(int x, int y){
     trebuchet.setInclinaisonTrebuchet(y);
     this->update();
 
+}
+
+
+
+void MyGLWidget::launch(int force){
+
+   double tmpZ;
+   double tmpY;
+   qDebug() << force;
+
+   if(force == 5){
+       for (int i=0; i<(6); i++)
+       {
+           tmpZ=(0.5*i*i -  0.5*(5)*i)-1;
+           tmpY= ((5)*i)*0.5 -4;
+           trebuchet.ball.setX(tmpZ);
+           trebuchet.ball.setZ(-tmpY);
+           updateGL();
+           QThread::usleep(90000);
+       }
+   }
+
+   else if(force == 10){
+       for (int i=0; i<(11); i++)
+       {
+           tmpZ=(0.5*i*i -  0.5*(10)*i)-1;
+           tmpY= ((10)*i)*0.5 -4;
+           trebuchet.ball.setX(tmpZ);
+           trebuchet.ball.setZ(-tmpY);
+           updateGL();
+           QThread::usleep(90000);
+       }
+   }
+
+   else{
+       for (int i=0; i<(14); i++)
+       {
+           tmpZ=(0.5*i*i -  0.5*(13)*i)-1;
+           tmpY= ((15)*i)*0.5 -4;
+           trebuchet.ball.setX(tmpZ);
+           trebuchet.ball.setZ(-tmpY);
+           updateGL();
+           QThread::usleep(90000);
+       }
+   }
 }

@@ -1,11 +1,11 @@
 #ifndef TREBUCHET_H
 #define TREBUCHET_H
 #include <QImage>
-/*Dépendances Mac
-#include <glu.h> */
+/*Dépendances Mac*/
+#include <glu.h>
 
-/*Dépendances PC*/
-#include <GL/glu.h>
+/*Dépendances PC
+#include <GL/glu.h>*/
 
 #include "projectile.h"
 
@@ -36,6 +36,7 @@ public:
     //Méthode pour créer la display list d'un pied du trébuchet
     void createFootDisplayList();
 
+    Projectile ball;
 protected:
     double angleTrebuchet_; //Angle pour rotation
     double inclinaisonBras_; //Inclinaison du bras
@@ -45,7 +46,7 @@ protected:
     GLuint logoTexture[1]; //Texture logo TSE
     GLuint woodTexture[1]; //Texture bois du trébuchet
 
-    Projectile ball;
+
 };
 
 #endif // TREBUCHET_H

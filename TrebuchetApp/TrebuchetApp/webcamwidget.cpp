@@ -20,6 +20,7 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
 
     connect(tmrTimer_, SIGNAL(timeout()), this, SLOT(update()));
     tmrTimer_->start(10); // 10 ms
+    previousY = 15;
 }
 
 WebcamWidget::~WebcamWidget()
@@ -126,18 +127,28 @@ void WebcamWidget::followDetection(){
     initialX_ = resultRect.x + 130;
     initialY_ = resultRect.y -80;
 
-
     // On emet le signal pour récuperer les coordonnées:
 
     emit getCoords(initialX_, initialY_);
 
-    // On emet le signal de lancement :
-    int compareLancement = 115;
 
-    if (resultRect.y > compareLancement && (resultRect.y-compareLancement)>30){
-        emit launch();
+    // On emet le signal de lancement en fonction de la puissance :
+
+    if (initialY_ - previousY > 50){
+        if (previousY < 14 ){
+            previousY=5;
+            emit launch(previousY);}
+
+        else if ( previousY<30 && previousY>14){
+            previousY = 10;
+            emit launch(previousY);
+        }
+
+        else{
+            previousY=15;
+            emit launch(previousY);
+        }
+
     }
-
-
-
-}
+    previousY = initialY_;
+    }

@@ -51,6 +51,8 @@ private:
     int initialX_;
     int initialY_;
 
+    int previousY;
+
     QPushButton webcamCapture;
     QPushButton reinitCapture;
 
@@ -70,7 +72,7 @@ signals:
     void getCoords(int x,int y);
 
     void trackingStarted();
-    void launch();
+    void launch(int force);
 
 };
 

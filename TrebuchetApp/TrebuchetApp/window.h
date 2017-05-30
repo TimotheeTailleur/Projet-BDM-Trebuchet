@@ -33,10 +33,9 @@ private:
      bool lancementEnCours_;
 
 private slots:
-    void setRot();
     void startGame(); //Démarrage du jeu après lancement du tracking par webcam
     void updateTimes(); //Mise à jour de l'affichage des temps toutes les 1000ms
-    void launch();
+    void launch(int force);
 };
 
 #endif // WINDOW_H

@@ -67,11 +67,14 @@ void Trebuchet::draw()
             drawQuad(1.4,2*0.1);
         glPopMatrix();
     glPopMatrix();
+
+    drawLogo();
 }
 
 void Trebuchet::drawQuad(double length, double width)
 {
     glBindTexture(GL_TEXTURE_2D, woodTexture[0]);
+    glEnable(GL_TEXTURE_2D);
     glBegin(GL_QUADS);
         glNormal3d(-1,0,0);
         //face devant
@@ -125,6 +128,8 @@ void Trebuchet::drawQuad(double length, double width)
         glTexCoord2d(length,0);               glVertex3d(length,-width/2,width/2);
         glTexCoord2d(length,width*2);     glVertex3d(length,width/2,width/2);
     glEnd();
+
+    glDisable(GL_TEXTURE_2D);
 }
 
 void Trebuchet::createFootDisplayList()
@@ -144,6 +149,39 @@ void Trebuchet::createFootDisplayList()
             drawQuad(3,0.2*0.92);
         glPopMatrix();
     glEndList();
+}
+
+void Trebuchet::drawLogo()
+{
+    qDebug()<<"drawLogo()";
+
+    glPushMatrix();
+    glTranslated(1.0,2.0,5.0);
+
+
+    glBindTexture(GL_TEXTURE_2D, logoTexture[0]);
+    glEnable(GL_TEXTURE_2D);
+
+    glBegin(GL_QUADS);
+        glNormal3d(0,0,-1);
+
+        glTexCoord2d(0,0);
+        glVertex3d(0,0,0);
+
+        glTexCoord2d(0,1);
+        glVertex3d(0,10,0);
+
+        glTexCoord2d(1,1);
+        glVertex3d(10,10,0);
+
+        glTexCoord2d(1,0);
+        glVertex3d(10,0,0);
+    glEnd();
+
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
 }
 
 void Trebuchet::init()

@@ -155,19 +155,6 @@ void MyGLWidget::getCoords(int x, int y){
     trebuchet.setAngleTrebuchet(y);
     trebuchet.setInclinaisonTrebuchet(x);
 
-    /*if (y-yRot>0)
-    {
-        trebuchet.setAngleTrebuchet(angleTrebuchet+(y-yPreviousHandPos)*0.3);
-        xPreviousHandPos=x;
-        yPreviousHandPos=y;
-
-    }else
-    {
-        trebuchet.setAngleTrebuchet(angleTrebuchet-abs(y-yPreviousHandPos)*0.3);
-        xPreviousHandPos=x;
-        yPreviousHandPos=y;
-    }*/
-
     this->update();
 
 }

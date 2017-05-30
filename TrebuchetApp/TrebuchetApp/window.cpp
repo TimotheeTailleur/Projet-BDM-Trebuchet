@@ -70,5 +70,4 @@ void Window::updateTimes()
 
     //Modifications affichage ui
     ui->gameTime->setText(jeu_.getTime()->toString("mm:ss"));
-    //ui->currentTargetTime->setText();
 }

@@ -17,6 +17,7 @@ public:
     //Méthodes de dessin
     void draw();
     void init();
+    void drawLogo();
 
     //Getters & Setters
     double getAngleTrebuchet();

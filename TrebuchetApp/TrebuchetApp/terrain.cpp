@@ -70,9 +70,12 @@ void Terrain::draw(){
     /*  Dessin du grillage */
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, fenceTexture[0]);
+    glDepthMask (GL_TRUE);
+    glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
+    glEnable( GL_BLEND );
     glDepthMask (GL_FALSE);
     glBegin(GL_QUAD_STRIP);
-    glColor4f(1,1,1,0.);
+    glColor4f(1,1,1,0.5);
     glTexCoord2f (0,0);
     glVertex3f(-30,-12,0);
     glTexCoord2f (0,1);
@@ -90,6 +93,8 @@ void Terrain::draw(){
     glTexCoord2f (1,1);
     glVertex3f(30,-12,15);
     glEnd();
+
     glDepthMask (GL_TRUE);
+     glDisable (GL_BLEND);
     glDisable( GL_TEXTURE_2D );
 }

@@ -134,12 +134,13 @@ void WebcamWidget::followDetection(){
 
     // On emet le signal de lancement en fonction de la puissance :
 
-    if (initialY_ - previousY > 50){
+    if (initialY_ - previousY > 40){
+        qDebug() << "previous" << previousY;
         if (previousY < 14 ){
             previousY=5;
             emit launch(previousY);}
 
-        else if ( previousY<30 && previousY>14){
+        else if (  previousY>14 && previousY<40){
             previousY = 10;
             emit launch(previousY);
         }

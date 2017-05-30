@@ -198,4 +198,9 @@ void MyGLWidget::launch(int force){
            QThread::usleep(90000);
        }
    }
+
+   QThread::msleep(1500);
+   trebuchet.ball.setX(0);
+   trebuchet.ball.setY(0);
+   trebuchet.ball.setZ(4);
 }

@@ -38,7 +38,15 @@ void Trebuchet::draw()
             glTranslated(-3*1.5/4.75,0,0);
             drawQuad(3*1.5,0.3*1.5);
 
-            //fil et contrepoids
+
+            //Dessin du projectile
+            ball.setX(4);
+            ball.setY(0);
+            ball.setZ(.5);
+            ball.draw();
+
+
+            //contrepoids
             glTranslated(0.2*0.75,0,0.2*0.75);
             glRotated(-inclinaisonBras_,0,1,0);
             glBegin(GL_LINES);
@@ -51,11 +59,7 @@ void Trebuchet::draw()
             glTranslated(-0.25,0,-0.75);
             drawQuad(0.6,2*0.5);
 
-            //Dessin du projectile
-            //ball.setX();
-            //ball.setY();
-            ball.setZ(2.91);
-            ball.draw();
+
         glPopMatrix();
 
 

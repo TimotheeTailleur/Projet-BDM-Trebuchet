@@ -19,7 +19,7 @@ void Projectile::draw()
             gluQuadricTexture(projectilePrmtrs,1);
 
             glTranslated(x_,y_,z_);
-            glScalef(1.5,1.5,1.5);
+            glScalef(.8,.8,.8);
             gluSphere(projectilePrmtrs,0.5,10,10);
             gluDeleteQuadric(projectilePrmtrs);;
         glPopMatrix();

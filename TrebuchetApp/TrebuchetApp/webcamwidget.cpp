@@ -113,16 +113,31 @@ void WebcamWidget::followDetection(){
     Rect resultRect = Rect(maxLoc.x, maxLoc.y, templateWidth_, templateHeight_);
     rectangle(matOriginal_,resultRect, Scalar(0,255,0), 2, 8, 0);
 
+    // Dessin du rectangle de délimitation :
+
+    Rect limitRect = Rect(99,77,115,85);
+    rectangle(matOriginal_,limitRect,Scalar(0,0,255), 2,8,0);
+
+    // Application du traitement au label pour afficher la webcam:
+
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
 
-    initialX_ = resultRect.y -80;
-    initialY_ = resultRect.x + 130;
+    initialX_ = resultRect.x + 130;
+    initialY_ = resultRect.y -80;
 
-    qDebug() << initialX_;
 
     // On emet le signal pour récuperer les coordonnées:
 
     emit getCoords(initialX_, initialY_);
+
+    // On emet le signal de lancement :
+    int compareLancement = 115;
+
+    if (resultRect.y > compareLancement && (resultRect.y-compareLancement)>30){
+        emit launch();
+    }
+
+
 
 }

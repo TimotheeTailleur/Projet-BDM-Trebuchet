@@ -149,25 +149,8 @@ void MyGLWidget::getCoords(int x, int y){
 
    // Dans cette méthode, on réutilise les coordonnées récupérées par le tracking de la webcam.
 
-    //double angleTrebuchet=trebuchet.getAngleTrebuchet();
-    qDebug() << x;
-
-    trebuchet.setAngleTrebuchet(y);
-    trebuchet.setInclinaisonTrebuchet(x);
-
-    /*if (y-yRot>0)
-    {
-        trebuchet.setAngleTrebuchet(angleTrebuchet+(y-yPreviousHandPos)*0.3);
-        xPreviousHandPos=x;
-        yPreviousHandPos=y;
-
-    }else
-    {
-        trebuchet.setAngleTrebuchet(angleTrebuchet-abs(y-yPreviousHandPos)*0.3);
-        xPreviousHandPos=x;
-        yPreviousHandPos=y;
-    }*/
-
+    trebuchet.setAngleTrebuchet(x);
+    trebuchet.setInclinaisonTrebuchet(y);
     this->update();
 
 }

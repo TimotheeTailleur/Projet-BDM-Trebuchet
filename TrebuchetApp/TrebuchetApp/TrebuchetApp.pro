@@ -24,15 +24,38 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        webcamwidget.cpp
+        webcamwidget.cpp\
+        myglwidget.cpp \
+        window.cpp \
+    cible.cpp \
+    jeu.cpp \
+    score.cpp \
+    terrain.cpp \
+    trebuchet.cpp \
+    initdialogbox.cpp \
+    projectile.cpp
 
-HEADERS  += webcamwidget.h
+HEADERS  += webcamwidget.h \
+         myglwidget.h \
+         window.h \
+    cible.h \
+    jeu.h \
+    score.h \
+    terrain.h \
+    trebuchet.h \
+    initdialogbox.h \
+    projectile.h
 
-FORMS    += webcamwidget.ui
+FORMS    += webcamwidget.ui\
+    window.ui \
+    initdialogbox.ui
+
+QT += opengl
 
 QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.11.1
 
-INCLUDEPATH += /usr/local/Cellar/opencv/2.4.13.2/include
+INCLUDEPATH += /usr/local/Cellar/opencv/2.4.13.2/include \
+
 
 LIBS += -L/usr/local/Cellar/opencv/2.4.13.2/lib \
     -lopencv_core \
@@ -40,3 +63,7 @@ LIBS += -L/usr/local/Cellar/opencv/2.4.13.2/lib \
     -lopencv_imgproc \
     -lopencv_features2d \
     -lopencv_calib3d
+
+RESOURCES += \
+    src.qrc
+

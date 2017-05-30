@@ -4,7 +4,7 @@
 /*Dépendances Mac*/
 
 /*Dépendances PC*/
-#include <GL/glu.h>
+#include <glu.h>
 
 #define PI
 

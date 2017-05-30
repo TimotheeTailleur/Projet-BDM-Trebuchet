@@ -23,6 +23,10 @@ Window::Window(QWidget *parent) :
 
     //Connexion début tracking du mouvement avec initialisation des paramètres du jeu & du chronomètre
     connect(ui->webcamWidget,SIGNAL(trackingStarted()),SLOT(startGame()));
+
+    //Connexion lancement du projectile :
+    connect(ui->webcamWidget,SIGNAL(launch()),SLOT(launch()));
+
 }
 
 Window::~Window()
@@ -70,4 +74,9 @@ void Window::updateTimes()
 
     //Modifications affichage ui
     ui->gameTime->setText(jeu_.getTime()->toString("mm:ss"));
+}
+
+// Lancement du projectile
+void Window::launch(){
+
 }

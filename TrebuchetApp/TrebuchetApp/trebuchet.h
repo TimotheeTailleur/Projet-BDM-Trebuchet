@@ -7,6 +7,8 @@
 /*Dépendances PC*/
 #include <GL/glu.h>
 
+#include "projectile.h"
+
 class Trebuchet
 {
 public:
@@ -41,6 +43,8 @@ protected:
 
     GLuint logoTexture[1]; //Texture logo TSE
     GLuint woodTexture[1]; //Texture bois du trébuchet
+
+    Projectile ball;
 };
 
 #endif // TREBUCHET_H

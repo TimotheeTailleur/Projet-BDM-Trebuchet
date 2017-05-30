@@ -50,6 +50,12 @@ void Trebuchet::draw()
             glEnd();
             glTranslated(-0.25,0,-0.75);
             drawQuad(0.6,2*0.5);
+
+            //Dessin du projectile
+            //ball.setX();
+            //ball.setY();
+            ball.setZ(2.91);
+            ball.draw();
         glPopMatrix();
 
 

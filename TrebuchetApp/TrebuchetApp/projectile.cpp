@@ -18,7 +18,7 @@ void Projectile::draw()
             gluQuadricDrawStyle(projectilePrmtrs, GLU_FILL);
             gluQuadricTexture(projectilePrmtrs,1);
 
-            glTranslatef(x_,y_,z_);
+            glTranslated(x_,y_,z_);
             glScalef(1.5,1.5,1.5);
             gluSphere(projectilePrmtrs,0.5,10,10);
             gluDeleteQuadric(projectilePrmtrs);;

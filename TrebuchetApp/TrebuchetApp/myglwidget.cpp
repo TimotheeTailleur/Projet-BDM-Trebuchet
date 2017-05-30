@@ -83,7 +83,7 @@ void MyGLWidget::draw()
    terrain.draw();
    trebuchet.draw();
    cible.draw(10,10);
-   projectile.draw();
+   //projectile.draw();
 }
 
 

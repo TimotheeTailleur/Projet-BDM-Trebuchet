@@ -1,6 +1,6 @@
 #ifndef CIBLE_H
 #define CIBLE_H
-#include <glu.h>
+#include <GL/glu.h>
 #include <QImage>
 
 class Cible

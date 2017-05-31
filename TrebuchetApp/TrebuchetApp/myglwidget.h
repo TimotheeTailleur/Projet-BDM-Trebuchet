@@ -8,13 +8,13 @@
 #include <QDebug>
 #include <QTimer>
 
-/*Dépendances Windows
+/*Dépendances Windows*/
 #include <QtOpenGL>
-#include <GL/glu.h>*/
+#include <GL/glu.h>
 
-/*Dépendances Mac*/
+/*Dépendances Mac
 #include <OpenGL.h>
-#include <glu.h>
+#include <glu.h> */
 
 #include "trebuchet.h"
 #include "cible.h"
@@ -31,15 +31,24 @@ public:
 signals:
 
 public:
-    void launch(int force);
+    void launch(int force); //Lancement du projectile
+
+    void loadLogoTexture(); //Charge la texture du logo TSE
 
 protected:
+
+    //Méthodes de dessin
     void initializeGL();
     void paintGL();
+    void draw();
     void resizeGL(int width, int height);
+    void drawLogo(int x, int y, int z, double angleX, double angleY, double angleZ); //Dessine le logo TSE aux coordonnées x,y,z
 
+    //Gestion des évènements
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+
+
 
 public slots:
     // slots pour rotation x,y,z
@@ -60,9 +69,7 @@ signals:
 
 private:
 
-
-    void draw();
-
+    //Elements du modèle
     Terrain terrain;
     Trebuchet trebuchet;
     Cible cible;
@@ -80,6 +87,9 @@ private:
     Projectile balle_lancee;
 
     QPoint lastPos;
+
+    GLuint logoTexture[1]; //Texture logo TSE
+
 };
 
 #endif // MYGLWIDGET_H

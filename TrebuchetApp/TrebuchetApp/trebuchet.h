@@ -1,11 +1,11 @@
 #ifndef TREBUCHET_H
 #define TREBUCHET_H
 #include <QImage>
-/*Dépendances Mac*/
-#include <glu.h>
+/*Dépendances Mac
+#include <glu.h>*/
 
-/*Dépendances PC
-#include <GL/glu.h>*/
+/*Dépendances PC*/
+#include <GL/glu.h>
 
 #include "projectile.h"
 
@@ -17,7 +17,6 @@ public:
     //Méthodes de dessin
     void draw();
     void init();
-    void drawLogo();
 
     //Getters & Setters
     double getAngleTrebuchet();
@@ -27,7 +26,7 @@ public:
     void setInclinaisonTrebuchet(double inclinaison);
 
     //Chargement des textures
-    void loadLogoTexture(); //Charge la texture du logo TSE
+
     void loadWoodTexture(); //Charge la texture du trébuchet
 
     //Méthode pour dessiner les quads qui vont former le trébuchet
@@ -43,9 +42,7 @@ protected:
 
     GLuint footList; // GLuint qui contiendra la display list d'un pied du trebuchet
 
-    GLuint logoTexture[1]; //Texture logo TSE
     GLuint woodTexture[1]; //Texture bois du trébuchet
-
 
 };
 

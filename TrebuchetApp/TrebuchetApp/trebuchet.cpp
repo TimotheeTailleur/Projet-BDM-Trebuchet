@@ -70,7 +70,6 @@ void Trebuchet::draw()
         glPopMatrix();
     glPopMatrix();
 
-    drawLogo();
 }
 
 void Trebuchet::drawQuad(double length, double width)
@@ -153,42 +152,9 @@ void Trebuchet::createFootDisplayList()
     glEndList();
 }
 
-void Trebuchet::drawLogo()
-{
-    qDebug()<<"drawLogo()";
-
-    glPushMatrix();
-    glTranslated(1.0,2.0,5.0);
-
-
-    glBindTexture(GL_TEXTURE_2D, logoTexture[0]);
-    glEnable(GL_TEXTURE_2D);
-
-    glBegin(GL_QUADS);
-        glNormal3d(0,0,-1);
-
-        glTexCoord2d(0,0);
-        glVertex3d(0,0,0);
-
-        glTexCoord2d(0,1);
-        glVertex3d(0,10,0);
-
-        glTexCoord2d(1,1);
-        glVertex3d(10,10,0);
-
-        glTexCoord2d(1,0);
-        glVertex3d(10,0,0);
-    glEnd();
-
-
-    glDisable(GL_TEXTURE_2D);
-    glPopMatrix();
-
-}
 
 void Trebuchet::init()
 {
-    loadLogoTexture();
     loadWoodTexture();
     createFootDisplayList();
 }
@@ -236,24 +202,6 @@ void Trebuchet::setInclinaisonTrebuchet(double inclinaison)
 
 /* Méthodes de chargement des textures */
 
-void Trebuchet::loadLogoTexture()
-{
-
-    QImage image;
-    image.load(":/src/img/TSE.bmp");
-    image = image.convertToFormat(QImage::Format_RGB888);
-    image = image.mirrored();
-
-    glGenTextures(1, &logoTexture[0]);
-    glBindTexture(GL_TEXTURE_2D, logoTexture[0]);
-    glTexImage2D(GL_TEXTURE_2D, 0, 3,
-                 image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE,
-                 image.bits());
-
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
-
-}
 
 void Trebuchet::loadWoodTexture()
 {

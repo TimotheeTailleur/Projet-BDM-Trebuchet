@@ -43,6 +43,7 @@ void MyGLWidget::initializeGL()
     terrain.init();
     trebuchet.init();
     cible.init();
+    loadLogoTexture(); //On charge la texture du Logo
 
 }
 
@@ -83,6 +84,50 @@ void MyGLWidget::draw()
    terrain.draw();
    trebuchet.draw();
    cible.draw(10,10);
+
+   //Logo gauche
+   drawLogo(-30,2,5,90,90,0);
+
+   //Logo centre
+   drawLogo (0, 60, 5,90,0,0);
+
+   //Logo droit
+   drawLogo(30,2,5,90,90,0);
+}
+
+void MyGLWidget::drawLogo(int x, int y, int z,double angleX ,double angleY, double angleZ)
+{
+    glPushMatrix();
+
+    glTranslated(x,y,z);
+    glRotated(angleX,1,0,0);
+    glRotated(angleY,0,1,0);
+    glRotated(angleZ,0,0,1);
+
+    glColor3ub(255,255,255);
+
+    glBindTexture(GL_TEXTURE_2D, logoTexture[0]);
+    glEnable(GL_TEXTURE_2D);
+
+    glBegin(GL_QUADS);
+
+        glTexCoord2d(0,0);
+        glVertex3d(0,0,0);
+
+        glTexCoord2d(0,1);
+        glVertex3d(0,8,0);
+
+        glTexCoord2d(1,1);
+        glVertex3d(8,8,0);
+
+        glTexCoord2d(1,0);
+        glVertex3d(8,0,0);
+    glEnd();
+
+
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
 }
 
 
@@ -203,4 +248,24 @@ void MyGLWidget::launch(int force){
    trebuchet.ball.setX(0);
    trebuchet.ball.setY(0);
    trebuchet.ball.setZ(4);
+}
+
+
+void MyGLWidget::loadLogoTexture()
+{
+
+    QImage image;
+    image.load(":/src/img/TSE.bmp");
+    image = image.convertToFormat(QImage::Format_RGB888);
+    image = image.mirrored();
+
+    glGenTextures(1, &logoTexture[0]);
+    glBindTexture(GL_TEXTURE_2D, logoTexture[0]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3,
+                 image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE,
+                 image.bits());
+
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+
 }

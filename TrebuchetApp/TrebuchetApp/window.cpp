@@ -25,7 +25,7 @@ Window::Window(QWidget *parent) :
     connect(ui->webcamWidget,SIGNAL(trackingStarted()),SLOT(startGame()));
 
     //Connexion lancement du projectile :
-    connect(ui->webcamWidget,SIGNAL(launch(int)),SLOT(launch(int)));
+    connect(ui->webcamWidget,SIGNAL(launch()),SLOT(launch()));
 
 }
 
@@ -62,8 +62,8 @@ void Window::updateTimes()
 }
 
 // Lancement du projectile
-void Window::launch(int force){
+void Window::launch(){
     lancementEnCours_ = true;
 
-    ui->glWidget->launch(force);
+    ui->glWidget->launch();
 }

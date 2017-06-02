@@ -72,7 +72,7 @@ signals:
     void getCoords(int x,int y);
 
     void trackingStarted();
-    void launch(int force);
+    void launch();
 
 };
 

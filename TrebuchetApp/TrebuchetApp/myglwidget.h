@@ -31,7 +31,7 @@ public:
 signals:
 
 public:
-    void launch(int force); //Lancement du projectile
+    void launch(); //Lancement du projectile
 
     void loadLogoTexture(); //Charge la texture du logo TSE
 

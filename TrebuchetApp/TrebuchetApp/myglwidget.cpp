@@ -202,36 +202,26 @@ void MyGLWidget::getCoords(int x, int y){
 
 
 
-void MyGLWidget::launch(int force){
+void MyGLWidget::launch(){
 
    double tmpZ;
    double tmpY;
-   qDebug() << force;
 
-   if(force == 5){
-       for (int i=0; i<(6); i++)
+   qDebug()<<"Inclinaison Trebuchet :"<<trebuchet.getInsclinaisonTrebuchet();
+   int force=(trebuchet.getInsclinaisonTrebuchet())/3;
+   qDebug() <<"force :" <<force<<endl;
+
+   if(force <15 ){
+       for (int i=0; i<(force+1); i++)
        {
-           tmpZ=(0.5*i*i -  0.5*(5)*i)-1;
-           tmpY= ((5)*i)*0.5 -4;
+           tmpZ=(0.5*i*i -  0.5*(force)*i)-1;
+           tmpY= ((force)*i)*0.5 -4;
            trebuchet.ball.setX(tmpZ);
            trebuchet.ball.setZ(-tmpY);
            updateGL();
            QThread::usleep(90000);
        }
    }
-
-   else if(force == 10){
-       for (int i=0; i<(11); i++)
-       {
-           tmpZ=(0.5*i*i -  0.5*(10)*i)-1;
-           tmpY= ((10)*i)*0.5 -4;
-           trebuchet.ball.setX(tmpZ);
-           trebuchet.ball.setZ(-tmpY);
-           updateGL();
-           QThread::usleep(90000);
-       }
-   }
-
    else{
        for (int i=0; i<(14); i++)
        {
@@ -243,6 +233,8 @@ void MyGLWidget::launch(int force){
            QThread::usleep(90000);
        }
    }
+
+
 
    QThread::msleep(1500);
    trebuchet.ball.setX(0);

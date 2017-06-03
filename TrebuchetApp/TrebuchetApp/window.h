@@ -35,7 +35,7 @@ private:
 private slots:
     void startGame(); //Démarrage du jeu après lancement du tracking par webcam
     void updateTimes(); //Mise à jour de l'affichage des temps toutes les 1000ms
-    void launch();  //Lancement du projectile
+    void launch(int force);
 };
 
 #endif // WINDOW_H

@@ -189,9 +189,8 @@ void Trebuchet::setAngleTrebuchet(double angle)
 
 void Trebuchet::setInclinaisonTrebuchet(double inclinaison)
 {
-   // qDebug()<<"Chgt inclinaison trebuchet";
-    if (inclinaison > 45){
-        inclinaisonBras_ = 45;
+    if (inclinaison > 36){
+        inclinaisonBras_ = 36;
     }
     else if(inclinaison < 0){
         inclinaisonBras_ = 0;

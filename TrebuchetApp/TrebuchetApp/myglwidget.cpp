@@ -43,6 +43,7 @@ void MyGLWidget::initializeGL()
     terrain.init();
     trebuchet.init();
 
+
     loadLogoTexture(); //On charge la texture du Logo
 
 }

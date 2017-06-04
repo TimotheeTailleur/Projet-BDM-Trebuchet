@@ -157,6 +157,7 @@ void Trebuchet::init()
 {
     loadWoodTexture();
     createFootDisplayList();
+    ball.init();
 }
 
 /*Getters & Setters*/

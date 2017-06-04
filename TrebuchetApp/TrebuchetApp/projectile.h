@@ -5,8 +5,7 @@
 
 /*Dépendances PC*/
 #include <GL/glu.h>
-
-#define PI
+#include <QImage>
 
 class Projectile
 {
@@ -16,6 +15,9 @@ public:
     //Méthodes de dessin & initialisation
     void draw();
     void init();
+
+    void loadProjectileTexture();
+
 
     //Méthode qui va mettre à jour la position en fonction du temps
     int updatePos();
@@ -33,6 +35,11 @@ public:
 protected:
     //GLUquadric pour représenter la sphère
     GLUquadric* projectilePrmtrs;
+
+    GLuint ballTexture[1];
+
+    void loadBallTexture();
+
 
     //Coordonnées
     double x_;

@@ -11,32 +11,46 @@ Projectile::Projectile()
 //Méthodes de dessin & initialisation
 void Projectile::draw()
 {
-    glEnable(GL_COLOR_MATERIAL);
-        glColor4f (1, 0.2, 0.2, 0);
+    glBindTexture(GL_TEXTURE_2D, ballTexture[0]);
+    glColor3ub(255,255,255);
         glPushMatrix();
-            projectilePrmtrs=gluNewQuadric();
-            gluQuadricDrawStyle(projectilePrmtrs, GLU_FILL);
-            gluQuadricTexture(projectilePrmtrs,1);
+        glTranslated(x_,y_,z_);
 
-            glTranslated(x_,y_,z_);
+        glEnable(GL_TEXTURE_2D);
+
+        glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+
+            projectilePrmtrs=gluNewQuadric();
+            gluQuadricTexture(projectilePrmtrs,1);
             glScalef(.8,.8,.8);
             gluSphere(projectilePrmtrs,0.5,10,10);
-            gluDeleteQuadric(projectilePrmtrs);;
+            gluQuadricNormals(projectilePrmtrs, GLU_SMOOTH);
+
         glPopMatrix();
-        glColor4f (1, 1, 1, 0);
-    glDisable(GL_COLOR_MATERIAL);
-    glFlush();
+    glDisable(GL_TEXTURE_2D);
+
 }
 
 void Projectile::init()
 {
-
+    loadBallTexture();
 }
 
-//Méthode qui va mettre à jour la position en fonction du temps
-int Projectile::updatePos()
+void Projectile::loadBallTexture()
 {
+    QImage image;
+    image.load(":/src/img/rock.jpg");
+    image = image.convertToFormat(QImage::Format_RGB888);
+    image = image.mirrored();
 
+    glGenTextures(1, &ballTexture[0]);
+    glBindTexture(GL_TEXTURE_2D, ballTexture[0]);
+    glTexImage2D(GL_TEXTURE_2D, 0, 3,
+                 image.width(), image.height(), 0, GL_RGB, GL_UNSIGNED_BYTE,
+                 image.bits());
+
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 }
 
 //Getters & Setters

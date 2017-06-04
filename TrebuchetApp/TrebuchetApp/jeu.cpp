@@ -1,4 +1,5 @@
 #include "jeu.h"
+#include <QDebug>
 
 using namespace std;
 
@@ -6,7 +7,7 @@ Jeu::Jeu()
 {
     scoreList_={};
     tempsJeu_= new QTime(0,0,0);
-
+    tempsCibleCourante_ = new QTime(0,0,0);
 }
 
 
@@ -24,6 +25,12 @@ std::vector<Score> Jeu::getScoreList()
 {
     return this->scoreList_;
 }
+
+Cible* Jeu::getCurrentTarget()
+{
+    return currentTarget_;
+}
+
 
  void Jeu::setDifficultyLevel(int difficultyLevel)
  {
@@ -70,17 +77,25 @@ std::vector<Score> Jeu::getScoreList()
 
  void Jeu::startGame(int difficultyLevel, int numberOfTargets){
 
+     tempsJeu_= new QTime(0,0,0);
+     tempsCibleCourante_ = new QTime(0,0,0);
      this->setDifficultyLevel(difficultyLevel);
      this->setNumberOfTargets(numberOfTargets);
+     currentTarget_ = new Cible(difficultyLevel_);
  }
 
- QTime* Jeu::getTime()
+ QTime* Jeu::getGameTime()
  {
      return tempsJeu_;
+ }
+
+ QTime* Jeu::getTargetTime()
+ {
+     return tempsCibleCourante_;
  }
 
  void Jeu::updateTimes()
  {
    *tempsJeu_= tempsJeu_->addSecs(1);
-
+   *tempsCibleCourante_ = tempsCibleCourante_->addSecs(1);
  }

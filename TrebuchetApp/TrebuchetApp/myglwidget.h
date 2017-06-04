@@ -28,12 +28,16 @@ public:
     explicit MyGLWidget(QWidget *parent = 0);
     ~MyGLWidget();
 
+    bool gameStarted=false;
+
 signals:
 
 public:
     void launch(int force); //Lancement du projectile
 
     void loadLogoTexture(); //Charge la texture du logo TSE
+
+    void setCible(Cible* cible);
 
 protected:
 
@@ -72,8 +76,10 @@ private:
     //Elements du modèle
     Terrain terrain;
     Trebuchet trebuchet;
-    Cible cible;
     Projectile projectile;
+    Cible * cible_;
+
+
 
     int xRot;
     int yRot;

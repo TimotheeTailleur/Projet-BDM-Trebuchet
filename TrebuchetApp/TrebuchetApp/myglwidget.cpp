@@ -42,7 +42,7 @@ void MyGLWidget::initializeGL()
     //Méthodes d'initialisations finales :
     terrain.init();
     trebuchet.init();
-    cible.init();
+
     loadLogoTexture(); //On charge la texture du Logo
 
 }
@@ -83,7 +83,10 @@ void MyGLWidget::draw()
 
    terrain.draw();
    trebuchet.draw();
-   cible.draw(10,10);
+   if (gameStarted)
+   {
+    cible_->draw();
+   }
 
    //Logo gauche
    drawLogo(-30,2,5,90,90,0);
@@ -170,6 +173,11 @@ void MyGLWidget::setZRotation(int angle)
         emit zRotationChanged(angle);
         updateGL();
     }
+}
+
+void MyGLWidget::setCible(Cible *cible)
+{
+    cible_=cible;
 }
 
 void MyGLWidget::mousePressEvent(QMouseEvent *event)

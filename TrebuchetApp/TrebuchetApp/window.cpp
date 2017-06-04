@@ -42,11 +42,20 @@ void Window::keyPressEvent(QKeyEvent *e)
         QWidget::keyPressEvent(e);
 }
 
-
+/* Initialisation du jeu
+ * On change le niveau de difficulté et le nombre de cibles du jeu
+ * On crée une nouvelle cible située dans la zone correspondant à la difficulté
+ * On initialise le temps du jeu et de la cible courante à 0
+ * Le glWidget devra maintenant afficher des cibles
+ * On met à jour l'affichage pour afficher la cible nouvellement créée */
 void Window::startGame()
 {
     jeu_.startGame(difficultyLevel_,numberOfTargets_);
-    ui->gameTime->setText(jeu_.getTime()->toString("mm:ss"));
+    ui->gameTime->setText(jeu_.getGameTime()->toString("mm:ss"));
+    ui->currentTargetTime->setText(jeu_.getTargetTime()->toString("mm:ss"));
+    ui->glWidget->setCible(jeu_.getCurrentTarget());
+    ui->glWidget->gameStarted=true;
+    ui->glWidget->update();
 
     timer_->start(1000);
 }
@@ -58,7 +67,8 @@ void Window::updateTimes()
     jeu_.updateTimes();
 
     //Modifications affichage ui
-    ui->gameTime->setText(jeu_.getTime()->toString("mm:ss"));
+    ui->gameTime->setText(jeu_.getGameTime()->toString("mm:ss"));
+    ui->currentTargetTime->setText(jeu_.getTargetTime()->toString("mm:ss"));
 }
 
 // Lancement du projectile

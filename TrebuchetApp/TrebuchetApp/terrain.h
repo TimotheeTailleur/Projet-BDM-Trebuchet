@@ -32,7 +32,6 @@ public:
 
 
 protected:
-    Cible target_; //Cible du jeu
 
     GLuint GLtexture[1];
     GLuint grassTexture[1]; //Texture Herbe

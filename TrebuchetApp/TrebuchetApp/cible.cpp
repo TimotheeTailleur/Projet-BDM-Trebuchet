@@ -1,15 +1,30 @@
 #include "cible.h"
 
-Cible::Cible()
+Cible::Cible(int difficultyLevel)
 {
-    xpos_=10;
-    ypos_=10;
+    /* x compris entre -28 et 28 peu importe le niveau de difficulté
+     * De cette manière, la cible est dans le grillage et s'affiche
+     * correctement */
+    xpos_=std::rand() % 56 + (-28);
+
+    if (difficultyLevel == 1)
+    {
+        ypos_=std::rand() %10 + 5;
+    }
+    if (difficultyLevel==2)
+    {
+        ypos_=std::rand() % 5 + 22;
+    }
+    if (difficultyLevel==3)
+    {
+        ypos_ = std::rand() % 4 +26;
+    }
 }
 
 
 void Cible::draw()
 {
-
+    init();
     glBindTexture(GL_TEXTURE_2D, targetTexture[0]);
     glColor3ub(255,255,255);
     glPushMatrix();
@@ -34,6 +49,7 @@ void Cible::init()
 }
 
 
+//Chargement texture cible
 void Cible::loadTargetTexture()
 {
     QImage image;
@@ -60,7 +76,7 @@ void Cible::loadTargetTexture()
  * => si zCible=2 et -xProjectile=2 alors les deux objets sont à la même hauteur
  * dans la représentation OpenGL
  * */
-int Cible::checkCollision(double xProjectile, double yProjectile)
+int Cible::checkCollision(double xProjectile, double yProjectile, double zProjectile)
 {
     //Calcul de la distance entre point en entrée et  point centre de la cible
     double d = pow((xProjectile-xpos_),2)+pow((yProjectile-ypos_),2);

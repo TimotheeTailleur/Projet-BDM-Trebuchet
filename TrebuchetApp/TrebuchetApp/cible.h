@@ -2,14 +2,16 @@
 #define CIBLE_H
 #include <GL/glu.h>
 #include <QImage>
+#include <QTime>
 
 class Cible
 {
 public:
-    Cible();
+    Cible(int difficultyLevel);
 
-    void draw(int xpos, int ypos);
+    void draw();
     void init();
+
 
 protected:
     GLUquadric *gluTargetPrmtrs;
@@ -17,8 +19,14 @@ protected:
 
     void loadTargetTexture();
 
+    int checkCollision(double xProjectile, double yProjectile, double zProjectile); //Méthode qui va vérifier les collisions
+
+    void getDifficultyLevel();
+    void setDifficultyLevel();
+
 protected:
-    QTime* tempsCible_;
+    double xpos_; //Position en x de la cible
+    double ypos_;   // Position en y de la cible
 };
 
 #endif // CIBLE_H

@@ -64,8 +64,11 @@
       </item>
       <item>
        <widget class="QSpinBox" name="diffLevelSpin">
+        <property name="minimum">
+         <number>1</number>
+        </property>
         <property name="maximum">
-         <number>2</number>
+         <number>3</number>
         </property>
        </widget>
       </item>
@@ -81,7 +84,11 @@
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="targetNumberEdit"/>
+       <widget class="QLineEdit" name="targetNumberEdit">
+        <property name="text">
+         <string>5</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>

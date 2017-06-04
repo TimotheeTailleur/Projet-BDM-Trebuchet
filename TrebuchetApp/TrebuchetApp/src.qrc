@@ -5,5 +5,6 @@
         <file>img/TSE.bmp</file>
         <file>img/fence.bmp</file>
         <file>img/target.bmp</file>
+        <file>img/rock.jpg</file>
     </qresource>
 </RCC>

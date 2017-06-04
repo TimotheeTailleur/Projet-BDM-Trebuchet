@@ -189,8 +189,8 @@ void Trebuchet::setAngleTrebuchet(double angle)
 
 void Trebuchet::setInclinaisonTrebuchet(double inclinaison)
 {
-    if (inclinaison > 36){
-        inclinaisonBras_ = 36;
+    if (inclinaison > 45){
+        inclinaisonBras_ = 45;
     }
     else if(inclinaison < 0){
         inclinaisonBras_ = 0;

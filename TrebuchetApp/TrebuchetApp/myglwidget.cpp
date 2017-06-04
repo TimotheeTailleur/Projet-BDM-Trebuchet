@@ -95,6 +95,9 @@ void MyGLWidget::draw()
    drawLogo(30,2,5,90,90,0);
 }
 
+/*Dessin du logo aux coordonnées x, y, z
+ * avec rotation angleX, angleY, angleZ autours
+ * des axes respectifs (facteur de 1 pour chaque axe) */
 void MyGLWidget::drawLogo(int x, int y, int z,double angleX ,double angleY, double angleZ)
 {
     glPushMatrix();

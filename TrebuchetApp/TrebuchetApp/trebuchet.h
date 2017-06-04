@@ -5,7 +5,7 @@
 #include <glu.h>*/
 
 /*Dépendances PC*/
-#include <GL/glu.h>
+#include <glu.h>
 
 #include "projectile.h"
 

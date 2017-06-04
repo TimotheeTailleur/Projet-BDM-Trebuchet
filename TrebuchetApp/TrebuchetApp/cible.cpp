@@ -1,23 +1,24 @@
 #include "cible.h"
+using namespace std;
 
 Cible::Cible(int difficultyLevel)
 {
     /* x compris entre -28 et 28 peu importe le niveau de difficulté
      * De cette manière, la cible est dans le grillage et s'affiche
      * correctement */
-    xpos_=std::rand() % 56 + (-28);
+    xpos_=rand() % 56 + (-28);
 
     if (difficultyLevel == 1)
     {
-        ypos_=std::rand() %10 + 5;
+        ypos_=rand() %10 + 5;
     }
     if (difficultyLevel==2)
     {
-        ypos_=std::rand() % 5 + 22;
+        ypos_=rand() % 5 + 22;
     }
     if (difficultyLevel==3)
     {
-        ypos_ = std::rand() % 4 +26;
+        ypos_ = rand() % 4 +26;
     }
 }
 

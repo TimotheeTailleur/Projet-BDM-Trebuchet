@@ -10,7 +10,7 @@
 
 /*Dépendances Windows*/
 #include <QtOpenGL>
-#include <GL/glu.h>
+#include <glu.h>
 
 /*Dépendances Mac
 #include <OpenGL.h>
@@ -74,9 +74,9 @@ signals:
 private:
 
     //Elements du modèle
-    Terrain terrain;
-    Trebuchet trebuchet;
-    Projectile projectile;
+    Terrain terrain_;
+    Trebuchet trebuchet_;
+    Projectile projectile_;
     Cible * cible_;
 
 
@@ -89,8 +89,6 @@ private:
     int yPreviousHandPos;
 
     int angle;
-
-    Projectile balle_lancee;
 
     QPoint lastPos;
 

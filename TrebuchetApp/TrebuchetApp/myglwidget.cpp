@@ -40,8 +40,8 @@ void MyGLWidget::initializeGL()
     glEnable(GL_DEPTH_TEST);
 
     //Méthodes d'initialisations finales :
-    terrain.init();
-    trebuchet.init();
+    terrain_.init();
+    trebuchet_.init();
 
 
     loadLogoTexture(); //On charge la texture du Logo
@@ -82,8 +82,8 @@ void MyGLWidget::draw()
 {
     //Méthode finale
 
-   terrain.draw();
-   trebuchet.draw();
+   terrain_.draw();
+   trebuchet_.draw();
    if (gameStarted)
    {
     cible_->draw();
@@ -206,8 +206,8 @@ void MyGLWidget::getCoords(int x, int y){
 
    // Dans cette méthode, on réutilise les coordonnées récupérées par le tracking de la webcam.
 
-    trebuchet.setAngleTrebuchet(x);
-    trebuchet.setInclinaisonTrebuchet(y);
+    trebuchet_.setAngleTrebuchet(x);
+    trebuchet_.setInclinaisonTrebuchet(y);
     this->update();
 
 }
@@ -217,16 +217,15 @@ void MyGLWidget::getCoords(int x, int y){
 void MyGLWidget::launch(int force){
 
    double tmpZ;
-   double tmpY;
-   qDebug() << force;
+   double tmpX;
 
    if(force == 5){
        for (int i=0; i<(6); i++)
        {
-           tmpZ=(0.5*i*i -  0.5*(5)*i)-1;
-           tmpY= ((5)*i)*0.5 -4;
-           trebuchet.ball.setX(tmpZ);
-           trebuchet.ball.setZ(-tmpY);
+           tmpX=(0.5*i*i -  0.5*(5)*i)-1;
+           tmpZ= ((5)*i)*0.5 -4;
+           trebuchet_.ball.setX(tmpX);
+           trebuchet_.ball.setZ(-tmpZ);
            updateGL();
            QThread::usleep(90000);
        }
@@ -235,10 +234,10 @@ void MyGLWidget::launch(int force){
    else if(force == 10){
        for (int i=0; i<(11); i++)
        {
-           tmpZ=(0.5*i*i -  0.5*(10)*i)-1;
-           tmpY= ((10)*i)*0.5 -4;
-           trebuchet.ball.setX(tmpZ);
-           trebuchet.ball.setZ(-tmpY);
+           tmpX=(0.5*i*i -  0.5*(10)*i)-1;
+           tmpZ= ((10)*i)*0.5 -4;
+           trebuchet_.ball.setX(tmpX);
+           trebuchet_.ball.setZ(-tmpZ);
            updateGL();
            QThread::usleep(90000);
        }
@@ -247,19 +246,19 @@ void MyGLWidget::launch(int force){
    else{
        for (int i=0; i<(14); i++)
        {
-           tmpZ=(0.5*i*i -  0.5*(13)*i)-1;
-           tmpY= ((15)*i)*0.5 -4;
-           trebuchet.ball.setX(tmpZ);
-           trebuchet.ball.setZ(-tmpY);
+           tmpX=(0.5*i*i -  0.5*(13)*i)-1;
+           tmpZ= ((15)*i)*0.5 -4;
+           trebuchet_.ball.setX(tmpX);
+           trebuchet_.ball.setZ(-tmpZ);
            updateGL();
            QThread::usleep(90000);
        }
    }
 
    QThread::msleep(1500);
-   trebuchet.ball.setX(0);
-   trebuchet.ball.setY(0);
-   trebuchet.ball.setZ(4);
+   trebuchet_.ball.setX(0);
+   trebuchet_.ball.setY(0);
+   trebuchet_.ball.setZ(4);
 }
 
 

@@ -24,8 +24,8 @@ public:
     ~WebcamWidget();
     void followDetection();
     void capture();
-    int getInitialX() {return initialX_;}
-    int getInitialY() {return initialY_;}
+    int getInitialX() {return x_;}
+    int getInitialY() {return y_;}
 
 private:
 
@@ -48,10 +48,10 @@ private:
     int templateWidth_=50;
     int templateHeight_=50;
 
-    int initialX_;
-    int initialY_;
+    int x_;
+    int y_;
 
-    int previousY;
+    int previousY_;
 
     QPushButton webcamCapture;
     QPushButton reinitCapture;

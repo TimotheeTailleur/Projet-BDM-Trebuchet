@@ -20,7 +20,7 @@ WebcamWidget::WebcamWidget(QWidget *parent) :
 
     connect(tmrTimer_, SIGNAL(timeout()), this, SLOT(update()));
     tmrTimer_->start(10); // 10 ms
-    previousY = 15;
+    previousY_ = 15;
 }
 
 WebcamWidget::~WebcamWidget()
@@ -124,32 +124,31 @@ void WebcamWidget::followDetection(){
     QImage qimgOriginal_((uchar*)matOriginal_.data, matOriginal_.cols, matOriginal_.rows, matOriginal_.step, QImage::Format_RGB888);
     ui->label_2->setPixmap(QPixmap::fromImage(qimgOriginal_));
 
-    initialX_ = resultRect.x + 130;
-    initialY_ = resultRect.y -80;
+    x_ = resultRect.x + 130;
+    y_ = resultRect.y -80;
 
     // On emet le signal pour récuperer les coordonnées:
 
-    emit getCoords(initialX_, initialY_);
+    emit getCoords(x_, y_);
 
 
     // On emet le signal de lancement en fonction de la puissance :
 
-    if (initialY_ - previousY > 40){
-        qDebug() << "previous" << previousY;
-        if (previousY < 14 ){
-            previousY=5;
-            emit launch(previousY);}
+    if (y_ - previousY_ > 40){
+        if (previousY_ < 14 ){
+            previousY_=5;
+            emit launch(previousY_);}
 
-        else if (  previousY>14 && previousY<40){
-            previousY = 10;
-            emit launch(previousY);
+        else if (  previousY_>14 && previousY_<40){
+            previousY_ = 10;
+            emit launch(previousY_);
         }
 
         else{
-            previousY=15;
-            emit launch(previousY);
+            previousY_=15;
+            emit launch(previousY_);
         }
 
     }
-    previousY = initialY_;
+    previousY_ = y_;
     }

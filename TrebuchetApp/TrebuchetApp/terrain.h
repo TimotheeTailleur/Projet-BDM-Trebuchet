@@ -6,8 +6,8 @@
 #include <QtOpenGL>
 
 /*Dépendances PC*/
-#include <GL/glu.h>
-#include <GL/gl.h>
+#include <glu.h>
+#include <gl.h>
 
 /*Dépendances Mac
 #include <glu.h>

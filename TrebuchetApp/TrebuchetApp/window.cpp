@@ -53,6 +53,9 @@ void Window::startGame()
     jeu_.startGame(difficultyLevel_,numberOfTargets_);
     ui->gameTime->setText(jeu_.getGameTime()->toString("mm:ss"));
     ui->currentTargetTime->setText(jeu_.getTargetTime()->toString("mm:ss"));
+    ui->targetNumber->setText(QString::number(jeu_.getNumberOfTargets()));
+
+
     ui->glWidget->setCible(jeu_.getCurrentTarget());
     ui->glWidget->gameStarted=true;
     ui->glWidget->update();

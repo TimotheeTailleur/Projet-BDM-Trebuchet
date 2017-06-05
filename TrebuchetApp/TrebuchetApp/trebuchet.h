@@ -3,24 +3,19 @@
 #include <QImage>
 /*Dépendances Mac
 #include <glu.h>*/
-
 /*Dépendances PC*/
 #include <GL/glu.h>
-
 #include "projectile.h"
-
 /*
  * Modèle du trébuchet.
  * angleTrebuchet_ : gestion de la rotation autour de l'axe z (déplacement horizontal de la main)
  * inclinaisonBras_ : gestion de la rotation du bras de lancement (déplacement vertical de la main)
  *
  * */
-
 class Trebuchet
 {
 public:
     Trebuchet();
-
     //Méthodes de dessin
     void draw();
     void init();
@@ -46,11 +41,8 @@ public:
 protected:
     double angleTrebuchet_; //Angle pour rotation
     double inclinaisonBras_; //Inclinaison du bras
-
     GLuint footList; // GLuint qui contiendra la display list d'un pied du trebuchet
-
     GLuint woodTexture[1]; //Texture bois du trébuchet
-
 };
 
 #endif // TREBUCHET_H

@@ -10,7 +10,6 @@
 #include <opencv2/objdetect/objdetect.hpp>
 using namespace cv;
 
-
 namespace Ui {
 class WebcamWidget;
 }
@@ -83,7 +82,6 @@ private:
     QPushButton webcamCapture;
     QPushButton reinitCapture;
 
-
     //Timer pour mise à jour de l'affichage toutes les  ms
     QTimer * tmrTimer_;
 
@@ -111,7 +109,5 @@ signals:
 
     //Signal lancement projectile
     void launch(int force);
-
 };
-
 #endif // WEBCAMWIDGET_H

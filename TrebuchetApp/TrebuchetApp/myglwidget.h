@@ -1,5 +1,3 @@
-// myglwidget.h
-
 #ifndef MYGLWIDGET_H
 #define MYGLWIDGET_H
 
@@ -33,20 +31,12 @@ public:
 
     //Vaut true si le tracking de la webcam a été lancé et le jeu commencé.
     bool gameStarted=false;
-
-signals:
-
 public:
     void launch(int force); //Lancement du projectile
-
     void loadLogoTexture(); //Charge la texture du logo TSE
-
     void setCible(Cible* cible);
-
 protected:
-
     //Méthodes de dessin
-
     //Initialise l'éclairage, les ombres et appelle les méthodes d'initialisation du terrain et du trébuchet
     void initializeGL();
 
@@ -63,31 +53,22 @@ protected:
      * Dessin de trois logos TSE */
     void draw();
 
-
     //Dessin du logo TSE aux coordonnées (x,y,z) avec rotation autours de x,y,z en fonction des angles passés en paramètres
     void drawLogo(int x, int y, int z, double angleX, double angleY, double angleZ);
 
 public slots:
-
     // Slot pour MàJ attributs trébuchet après récupération des coordonnées par la webcam
     void getCoords(int x, int y);
-
 private:
 
     //Elements du modèle
     Terrain terrain_;
     Trebuchet trebuchet_;
-
-    //On fait une simple référence à la cible courante contenue (et gérée) dans l'objet Jeu
+    //On fait une simple référence à la cible courante gérée par l'objet Jeu
     Cible * cible_;
-
-
     int xPreviousHandPos;
     int yPreviousHandPos;
-
-
     GLuint logoTexture[1]; //Texture logo TSE
-
 };
 
 #endif // MYGLWIDGET_H

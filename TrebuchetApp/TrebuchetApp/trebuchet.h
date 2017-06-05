@@ -1,10 +1,13 @@
 #ifndef TREBUCHET_H
 #define TREBUCHET_H
 #include <QImage>
-/*Dépendances Mac
-#include <glu.h>*/
-/*Dépendances PC*/
-#include <GL/glu.h>
+
+/*Dépendances Mac*/
+#include <glu.h>
+
+/*Dépendances PC
+#include <GL/glu.h>*/
+
 #include "projectile.h"
 /*
  * Modèle du trébuchet.

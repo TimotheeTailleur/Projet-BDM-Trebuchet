@@ -2,8 +2,9 @@
 #define PROJECTILE_H
 
 /*Dépendances PC*/
-#include <GL/glu.h>
+#include <glu.h>
 #include <QImage>
+
 /*
  * Représentation du projectile du trébuchet.
  * Charge la texture pierre et possède des attributs
@@ -22,7 +23,6 @@ public:
     void loadProjectileTexture();
 
     //Getters & Setters
-
     double getX();
     double getY();
     double getZ();
@@ -40,11 +40,10 @@ protected:
 
     //Chargement de la texture de pierre
     void loadBallTexture();
+
     //Coordonnées
     double x_;
     double y_;
     double z_;
-
 };
-
 #endif // PROJECTILE_H

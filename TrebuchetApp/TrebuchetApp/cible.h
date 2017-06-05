@@ -1,6 +1,6 @@
 #ifndef CIBLE_H
 #define CIBLE_H
-#include <GL/glu.h>
+#include <glu.h>
 #include <math.h>
 #include <QImage>
 

@@ -5,13 +5,13 @@
 
 #include <QtOpenGL>
 
-/*Dépendances PC*/
+/*Dépendances PC
 #include <GL/glu.h>
-#include <GL/gl.h>
+#include <GL/gl.h>*/
 
-/*Dépendances Mac
+/*Dépendances Mac*/
 #include <glu.h>
-#include <gl.h>*/
+#include <gl.h>
 
 
 /*

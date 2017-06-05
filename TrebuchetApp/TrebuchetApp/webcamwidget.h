@@ -1,6 +1,5 @@
 #ifndef WEBCAMWIDGET_H
 #define WEBCAMWIDGET_H
-
 #include <QWidget>
 #include <QtCore>
 #include <QPushButton>
@@ -61,14 +60,12 @@ private:
     QImage qimgOriginal_;
     QImage qimgProcessing_;
 
-    //Largeur image capturée
+    //Largeur / Hauteur image capturée
     int frameWidth_;
-    //Hauteur image capturée
     int frameHeight_;
 
-    //Largeur template
+    //Largeur / Hauteur template
     int templateWidth_=50;
-    //Hauteur template
     int templateHeight_=50;
 
     //Coordonnées de la main après template matching

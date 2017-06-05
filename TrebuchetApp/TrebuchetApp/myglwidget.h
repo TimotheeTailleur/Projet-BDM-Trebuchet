@@ -1,17 +1,16 @@
 #ifndef MYGLWIDGET_H
 #define MYGLWIDGET_H
-
 #include <QGLWidget>
 #include <QThread>
 #include <QTimer>
 
-/*Dépendances Windows*/
+/*Dépendances Windows
 #include <QtOpenGL>
-#include <GL/glu.h>
+#include <GL/glu.h>*/
 
-/*Dépendances Mac
+/*Dépendances Mac*/
 #include <OpenGL.h>
-#include <glu.h> */
+#include <glu.h>
 
 #include "trebuchet.h"
 #include "cible.h"
@@ -66,8 +65,10 @@ private:
     Trebuchet trebuchet_;
     //On fait une simple référence à la cible courante gérée par l'objet Jeu
     Cible * cible_;
+
     int xPreviousHandPos;
     int yPreviousHandPos;
+
     GLuint logoTexture[1]; //Texture logo TSE
 };
 

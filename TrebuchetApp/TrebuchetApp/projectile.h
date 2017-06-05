@@ -6,9 +6,13 @@
 /*Dépendances PC*/
 #include <glu.h>
 #include <QImage>
-#include <glu.h>
 
-#define PI
+
+/*
+ * Représentation du projectile du trébuchet.
+ * Charge la texture pierre et possède des attributs
+ * correspondant aux coordonnées du centre du projectile
+ * */
 
 class Projectile
 {
@@ -19,11 +23,9 @@ public:
     void draw();
     void init();
 
+    //Chargement texture projectile
     void loadProjectileTexture();
 
-
-    //Méthode qui va mettre à jour la position en fonction du temps
-    int updatePos();
 
     //Getters & Setters
 
@@ -39,8 +41,10 @@ protected:
     //GLUquadric pour représenter la sphère
     GLUquadric* projectilePrmtrs;
 
+    //GLuint stockant la texture pierre du projectile
     GLuint ballTexture[1];
 
+    //Chargement de la texture de pierre
     void loadBallTexture();
 
 

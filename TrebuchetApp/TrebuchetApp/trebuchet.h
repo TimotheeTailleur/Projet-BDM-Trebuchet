@@ -5,9 +5,16 @@
 #include <glu.h>*/
 
 /*Dépendances PC*/
-#include <glu.h>
+#include <GL/glu.h>
 
 #include "projectile.h"
+
+/*
+ * Modèle du trébuchet.
+ * angleTrebuchet_ : gestion de la rotation autour de l'axe z (déplacement horizontal de la main)
+ * inclinaisonBras_ : gestion de la rotation du bras de lancement (déplacement vertical de la main)
+ *
+ * */
 
 class Trebuchet
 {

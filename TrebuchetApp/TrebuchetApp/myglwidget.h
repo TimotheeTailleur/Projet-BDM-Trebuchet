@@ -5,7 +5,6 @@
 
 #include <QGLWidget>
 #include <QThread>
-#include <QDebug>
 #include <QTimer>
 
 /*Dépendances Windows*/
@@ -19,15 +18,20 @@
 #include "trebuchet.h"
 #include "cible.h"
 #include "terrain.h"
-#include "projectile.h"
+
+
+/*
+ * Classe gérant l'affichage de la scène openGL
+ * Affichage du terrain, trébuchet, cible
+ */
 
 class MyGLWidget : public QGLWidget
 {
     Q_OBJECT
 public:
     explicit MyGLWidget(QWidget *parent = 0);
-    ~MyGLWidget();
 
+    //Vaut true si le tracking de la webcam a été lancé et le jeu commencé.
     bool gameStarted=false;
 
 signals:
@@ -42,55 +46,43 @@ public:
 protected:
 
     //Méthodes de dessin
+
+    //Initialise l'éclairage, les ombres et appelle les méthodes d'initialisation du terrain et du trébuchet
     void initializeGL();
+
+    /*Méthode qui sera appelée lors de la mise à jour de la scène
+     * Initialise le système de coordonnées
+     * appelle draw() */
     void paintGL();
+
+    /*
+     * Dessin du terrain, trébuchet et de la cible si le jeu
+     * est commencé.
+     * Dessin de trois logos TSE */
     void draw();
-    void resizeGL(int width, int height);
-    void drawLogo(int x, int y, int z, double angleX, double angleY, double angleZ); //Dessine le logo TSE aux coordonnées x,y,z
-
-    //Gestion des évènements
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
 
 
+    //Dessin du logo TSE aux coordonnées (x,y,z) avec rotation autours de x,y,z en fonction des angles passés en paramètres
+    void drawLogo(int x, int y, int z, double angleX, double angleY, double angleZ);
 
 public slots:
-    // slots pour rotation x,y,z
-    void setXRotation(int angle);
-    void setYRotation(int angle);
-    void setZRotation(int angle);
 
-    // slot pour récuperer les coordonnees de la main:
+    // Slot pour MàJ attributs trébuchet après récupération des coordonnées par la webcam
     void getCoords(int x, int y);
-
-
-
-signals:
-    // signaux pour rotation x,y,z
-    void xRotationChanged(int angle);
-    void yRotationChanged(int angle);
-    void zRotationChanged(int angle);
 
 private:
 
     //Elements du modèle
     Terrain terrain_;
     Trebuchet trebuchet_;
-    Projectile projectile_;
+
+    //On fait une simple référence à la cible courante contenue (et gérée) dans l'objet Jeu
     Cible * cible_;
 
-
-
-    int xRot;
-    int yRot;
-    int zRot;
 
     int xPreviousHandPos;
     int yPreviousHandPos;
 
-    int angle;
-
-    QPoint lastPos;
 
     GLuint logoTexture[1]; //Texture logo TSE
 

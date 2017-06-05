@@ -2,7 +2,6 @@
 
 #include <QtWidgets>
 #include "myglwidget.h"
-#include <QDebug>
 #include <QtOpenGL>
 
 
@@ -17,12 +16,6 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     yPreviousHandPos = 88;
 
     paintGL();
-}
-
-
-
-MyGLWidget::~MyGLWidget()
-{
 }
 
 void MyGLWidget::initializeGL()
@@ -58,23 +51,8 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     glTranslatef(-23, 0, 0);
-    glRotatef(-xRot , 0.0, 1.0, 0.0);
-    glRotatef(-yRot , 0.0, 0.0, 1.0);
-    glRotatef(-zRot , 1.0, 0.0, 0.0);
-
 
     draw();
-}
-
-void MyGLWidget::resizeGL(int width, int height)
-{
-    int side = qMin(width, height);
-    glViewport((width - side) / 2, (height - side) / 2, side, side);
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluPerspective(100,((float)width/(float)height),0.1,100);
-    glMatrixMode(GL_MODELVIEW);
 }
 
 
@@ -137,69 +115,9 @@ void MyGLWidget::drawLogo(int x, int y, int z,double angleX ,double angleY, doub
 
 }
 
-
-static void qNormalizeAngle(int &angle)
-{
-    while (angle < 0)
-        angle += 360 * 1;
-    while (angle > 360)
-        angle -= 360 * 1;
-}
-
-void MyGLWidget::setXRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != xRot) {
-        xRot = angle;
-        emit xRotationChanged(angle);
-        updateGL();
-    }
-}
-
-void MyGLWidget::setYRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != yRot) {
-        yRot = angle;
-        emit yRotationChanged(angle);
-        updateGL();
-    }
-}
-
-void MyGLWidget::setZRotation(int angle)
-{
-    qNormalizeAngle(angle);
-    if (angle != zRot) {
-        zRot = angle;
-        emit zRotationChanged(angle);
-        updateGL();
-    }
-}
-
 void MyGLWidget::setCible(Cible *cible)
 {
     cible_=cible;
-}
-
-void MyGLWidget::mousePressEvent(QMouseEvent *event)
-{
-    //this->launch(15);
-    lastPos = event->pos();
-}
-
-void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    int dx = event->x() - lastPos.x();
-    int dy = event->y() - lastPos.y();
-
-    if (event->buttons() & Qt::LeftButton) {
-        setXRotation(xRot + 8 * dy);
-        setYRotation(yRot + 8 * dx);
-    } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(xRot + 8 * dy);
-        setZRotation(zRot + 8 * dx);
-    }
-    lastPos = event->pos();
 }
 
 void MyGLWidget::getCoords(int x, int y){

@@ -12,6 +12,13 @@ namespace Ui {
 class Window;
 }
 
+/*
+ * Fenêtre principale de l'application.
+ * Récupère les paramètres de l'utilisateur depuis l'initDialogBox (nom, difficulté, nombre de cibles)
+ * Gère l'objet Jeu et gère la mise à jour de l'affichage des temps (temps de jeu et temps de la cible courante)
+ * Récupère les signaux du webcamwidget et les connecte aux slots correspondants de glWidget.
+ * */
+
 class Window : public QWidget
 {
     Q_OBJECT

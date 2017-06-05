@@ -7,6 +7,10 @@
 #include <fstream>
 #include <QTime>
 
+/*
+ * Modèle d'une partie du jeu. Gère le nombre de cibles, niveau de difficulté et l'affichage des temps.
+ * La méthode startGame est appelée après lancement du suivi de la webcam.
+ * */
 
 using namespace std;
 
@@ -35,7 +39,9 @@ public:
     //Lancement du jeu
     void startGame(int difficultyLevel=1, int numberOfTargets=5);
 
-    //Gestion des temps
+    /*
+     * Mise à jour des temps (du jeu et de la cible courante). Appelée par un timer de la fenêtre principale Window
+     * MàJ toutes les secondes */
     void updateTimes();
 protected:
     int difficultyLevel_; //Niveau de difficulté : 1, 2 ou 3

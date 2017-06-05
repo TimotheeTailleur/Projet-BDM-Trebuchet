@@ -6,6 +6,10 @@
 #include <fstream>
 using namespace std;
 
+/*
+ * Modèle d'un score du jeu.
+ * Gère la sauvegarde et le chargement d'un score au moyen d'un fstream
+ * */
 
 class Score
 {

@@ -8,6 +8,11 @@ Cible::Cible(int difficultyLevel)
      * correctement */
     xpos_=rand() % 56 + (-28);
 
+    /*
+     * Niveau de difficulté 1 : yCible entre 5 et 15
+     * Niveau de difficulté 2 : yCible entre 22 et 27
+     * Niveau de difficulté 3 : yCible entre 26 et 30
+     * */
     if (difficultyLevel == 1)
     {
         ypos_=rand() %10 + 5;
@@ -44,6 +49,7 @@ void Cible::draw()
     glDisable(GL_TEXTURE_2D);
 }
 
+//Pour initialiser la cible, on charge la texture de al cible en mémoire
 void Cible::init()
 {
     loadTargetTexture();
@@ -68,15 +74,8 @@ void Cible::loadTargetTexture()
     glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
 }
 
-//Méthode qui va vérifier les collisions
-/*
- * Le projectile n'a pas le même système de coordonnées que la cible.
- * On doit donc vérifier des conditions qui semblent porter sur des coordonnées
- * différentes mais qui correspondent aux mêmes directions dans la représentation OpenGL
- * ex : la coordonnée z de la cible correspond à -x du projectile
- * => si zCible=2 et -xProjectile=2 alors les deux objets sont à la même hauteur
- * dans la représentation OpenGL
- * */
+//Méthode qui va vérifier les collisions et renvoie le score du tir si collision
+
 int Cible::checkCollision(double xProjectile, double yProjectile, double zProjectile)
 {
     //Calcul de la distance entre point en entrée et  point centre de la cible
@@ -91,7 +90,7 @@ int Cible::checkCollision(double xProjectile, double yProjectile, double zProjec
          * entre 0 et 0.15.
          * Quand i vaut 9, entre 0.15 et 0.30, etc.
          * */
-        if ( (1.5-(0.15*i)<d) && (d<1.5-(0.15*(i-1))) )
+        if ( (1.5-(0.15*i)<d) && (d<1.5-(0.15*(i-1))) && (zProjectile==2) )
             return (i);
     }
 

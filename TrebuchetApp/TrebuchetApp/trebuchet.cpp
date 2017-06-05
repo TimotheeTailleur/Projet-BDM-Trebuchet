@@ -138,16 +138,16 @@ void Trebuchet::createFootDisplayList()
     footList=glGenLists(1);
     glNewList(footList,GL_COMPILE);
         glPushMatrix();
-            drawQuad(3,0.2*0.94);
+            drawQuad(3,1.88);
         glPopMatrix();
 
         glPushMatrix();
-            glTranslated(3*0.31,0,0);
+            glTranslated(0.93,0,0);
             glRotated(-80,0,1,0);
-            drawQuad(3,0.2*0.96);
+            drawQuad(3,0.192);
             glTranslated(3,0,0);
             glRotated(160,0,1,0);
-            drawQuad(3,0.2*0.92);
+            drawQuad(3,0.184);
         glPopMatrix();
     glEndList();
 }

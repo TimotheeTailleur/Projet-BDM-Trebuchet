@@ -9,7 +9,7 @@
 
 /*Dépendances Windows*/
 #include <QtOpenGL>
-#include <glu.h>
+#include <GL/glu.h>
 
 /*Dépendances Mac
 #include <OpenGL.h>
@@ -54,6 +54,8 @@ protected:
      * Initialise le système de coordonnées
      * appelle draw() */
     void paintGL();
+
+    void resizeGL(int width, int height);
 
     /*
      * Dessin du terrain, trébuchet et de la cible si le jeu

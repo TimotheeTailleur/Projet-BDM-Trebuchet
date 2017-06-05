@@ -8,10 +8,6 @@
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
-    xRot = 198;
-    yRot = 88;
-    zRot = 0;
-
     xPreviousHandPos = 198;
     yPreviousHandPos = 88;
 
@@ -52,7 +48,20 @@ void MyGLWidget::paintGL()
 
     glTranslatef(-23, 0, 0);
 
+   glRotatef(-198 , 0.0, 1.0, 0.0);
+   glRotatef(-88 , 0.0, 0.0, 1.0);
+
     draw();
+}
+
+void MyGLWidget::resizeGL(int width, int height)
+{
+    int side = qMin(width, height);
+    glViewport((width - side) / 2, (height - side) / 2, side, side);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluPerspective(100,((float)width/(float)height),0.1,100);
+    glMatrixMode(GL_MODELVIEW);
 }
 
 

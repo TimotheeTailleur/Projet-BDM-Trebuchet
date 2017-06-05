@@ -4,7 +4,7 @@
 /*Dépendances Mac*/
 
 /*Dépendances PC*/
-#include <glu.h>
+#include <GL/glu.h>
 #include <QImage>
 
 
